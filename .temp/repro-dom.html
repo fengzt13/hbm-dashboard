@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <title>最小复现</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<div id="out"></div><div id="diag" style="font-family:monospace;font-size:13px;margin:10px;padding:10px;background:#f0f0f0;">测试1 (双y轴+markArea) 报错: Cannot read properties of undefined (reading 'coord')<br>测试2 (bar+markLine trend) 报错: Cannot read properties of undefined (reading 'coord')</div>
+<div id="c1" style="width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" _echarts_instance_="ec_1788144360751"><div style="position: relative; width: 800px; height: 400px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="800" height="400" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+<div id="c2" style="width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" _echarts_instance_="ec_1788144360752"><div style="position: relative; width: 800px; height: 400px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="800" height="400" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+<script>
+window.onload = function() {
+  setTimeout(function() {
+    var result = [];
+    var data = [
+      { quarter: "2023Q1", supply: 2.8, demand: 2.65, gap: -5.2 },
+      { quarter: "2023Q2", supply: 3.0, demand: 2.88, gap: -3.8 },
+      { quarter: "2023Q3", supply: 3.5, demand: 3.58, gap: -2.4 }
+    ];
+
+    // 测试1: supplyDemand 结构 (双y轴 + bar + line + markArea)
+    try {
+      var chart1 = echarts.init(document.getElementById('c1'));
+      chart1.setOption({
+        legend: { data: ['供给量', '需求量', '供需缺口率'], top: 5 },
+        xAxis: { type: 'category', data: data.map(d => d.quarter) },
+        yAxis: [
+          { type: 'value', name: '数量' },
+          { type: 'value', name: '缺口率(%)' }
+        ],
+        series: [
+          { name: '供给量', type: 'bar', data: data.map(d => d.supply) },
+          { name: '需求量', type: 'bar', data: data.map(d => d.demand) },
+          {
+            name: '供需缺口率', type: 'line', yAxisIndex: 1,
+            data: data.map(d => d.gap),
+            markArea: { data: [[{ yAxis: 0, itemStyle: { color: 'rgba(231,76,60,0.03)' } }]] }
+          }
+        ]
+      });
+      result.push('测试1 (双y轴+markArea): 无异常');
+    } catch (e) {
+      result.push('测试1 (双y轴+markArea) 报错: ' + e.message);
+    }
+
+    // 测试2: marketSize 渲染（bar + markLine trend）
+    try {
+      var chart2 = echarts.init(document.getElementById('c2'));
+      chart2.setOption({
+        legend: { show: false },
+        xAxis: { type: 'category', data: [2023, 2024, 2025] },
+        yAxis: { type: 'value', name: '十亿美元' },
+        series: [{
+          type: 'bar',
+          data: [4.3, 12.0, 64.6],
+          markLine: {
+            data: [{ type: 'trend', lineStyle: { color: '#e74c3c', type: 'dashed' } }],
+            symbol: 'none'
+          }
+        }]
+      });
+      result.push('测试2 (bar+markLine trend): 无异常');
+    } catch (e) {
+      result.push('测试2 (bar+markLine trend) 报错: ' + e.message);
+    }
+
+    document.getElementById('diag').innerHTML = result.join('<br/>');
+  }, 500);
+};
+</script>
+
+</body></html>

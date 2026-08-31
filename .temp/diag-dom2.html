@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <title>诊断页</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<div id="out"></div><div id="diag" style="font-family:monospace;font-size:13px;margin:10px;padding:10px;background:#f0f0f0;">HBM_DATA loaded: true<br>supplyDemand exists: yes<br>supplyDemand.quarterly length: 14<br>marketSize exists: yes<br>marketSize.hbmRevenue length: 8<br>supplyDemand.quarterly[0]: {"quarter":"2023Q1","supply":2.8,"demand":2.65,"gap":-5.2,"note":"去库存阶段"}<br>marketSize.hbmRevenue[0]: {"year":2023,"revenue":4.3,"note":"AI需求爆发起点"}<br>renderSupplyDemand OK, chart=created<br>renderMarketSize OK, chart=created</div>
+<div id="chart-supply-demand" style="width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative;" _echarts_instance_="ec_1788144413286"><div style="position: relative; width: 800px; height: 400px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="800" height="400" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div class=""></div></div>
+<div id="chart-market-size" style="width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative;" _echarts_instance_="ec_1788144413287"><div style="position: relative; width: 800px; height: 400px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="800" height="400" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div class=""></div></div>
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  window.onload = function() {
+    setTimeout(function() {
+      var result = [];
+      try {
+        result.push('HBM_DATA loaded: ' + (typeof HBM_DATA !== 'undefined'));
+        result.push('supplyDemand exists: ' + (HBM_DATA && HBM_DATA.supplyDemand ? 'yes' : 'no'));
+        result.push('supplyDemand.quarterly length: ' + (HBM_DATA.supplyDemand ? HBM_DATA.supplyDemand.quarterly.length : 'N/A'));
+        result.push('marketSize exists: ' + (HBM_DATA && HBM_DATA.marketSize ? 'yes' : 'no'));
+        result.push('marketSize.hbmRevenue length: ' + (HBM_DATA.marketSize ? HBM_DATA.marketSize.hbmRevenue.length : 'N/A'));
+        result.push('supplyDemand.quarterly[0]: ' + JSON.stringify(HBM_DATA.supplyDemand.quarterly[0]));
+        result.push('marketSize.hbmRevenue[0]: ' + JSON.stringify(HBM_DATA.marketSize.hbmRevenue[0]));
+      } catch (e) {
+        result.push('data access error: ' + e.message);
+      }
+
+      // 渲染两个图表
+      try {
+        var c1 = renderSupplyDemand('chart-supply-demand');
+        result.push('renderSupplyDemand OK, chart=' + (c1 ? 'created' : 'null'));
+      } catch (e) {
+        result.push('renderSupplyDemand ERROR: ' + e.message + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' -> '));
+      }
+      try {
+        var c2 = renderMarketSize('chart-market-size');
+        result.push('renderMarketSize OK, chart=' + (c2 ? 'created' : 'null'));
+      } catch (e) {
+        result.push('renderMarketSize ERROR: ' + e.message + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' -> '));
+      }
+
+      // 等渲染完成后检查像素
+      setTimeout(function() {
+        ['chart-supply-demand', 'chart-market-size'].forEach(function(id) {
+          var el = document.getElementById(id);
+          var canvas = el ? el.querySelector('canvas') : null;
+          if (!canvas) { result.push(id + ': NO CANVAS'); return; }
+          try {
+            var ctx = canvas.getContext('2d');
+            var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var nonWhite = 0, total = imgData.data.length / 4;
+            for (var i = 0; i < imgData.data.length; i += 4) {
+              var r = imgData.data[i], g = imgData.data[i+1], b = imgData.data[i+2];
+              if (r < 240 || g < 240 || b < 240) nonWhite++;
+            }
+            result.push(id + ': canvas=' + canvas.width + 'x' + canvas.height + ', totalPx=' + total + ', nonWhitePx=' + nonWhite + ', nonWhitePct=' + (nonWhite/total*100).toFixed(2) + '%');
+          } catch (e) {
+            result.push(id + ': pixel check error: ' + e.message);
+          }
+        });
+      }, 3000);
+
+      document.getElementById('diag').innerHTML = result.join('<br/>');
+    }, 1000);
+  };
+</script>
+
+</body></html>

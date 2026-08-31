@@ -198,7 +198,7 @@ function renderSupplyDemand(domId) {
         lineStyle: { width: 3, color: COLORS.orange },
         itemStyle: { color: COLORS.orange },
         markArea: {
-          data: [[{ yAxis: 0, itemStyle: { color: 'rgba(231,76,60,0.03)' } }]]
+          data: [[{ yAxis: 0 }, { yAxis: 100 }]]
         }
       }
     ]
@@ -416,11 +416,7 @@ function renderMarketSize(domId) {
           { offset: 1, color: COLORS.primaryLight }
         ]), borderRadius: [4, 4, 0, 0] }
       })),
-      label: { show: true, position: 'top', formatter: '${c}B', fontSize: 11, fontWeight: 'bold', color: COLORS.primaryDark },
-      markLine: {
-        data: [{ type: 'trend', lineStyle: { color: COLORS.red, type: 'dashed' } }],
-        symbol: 'none'
-      }
+      label: { show: true, position: 'top', formatter: '${c}B', fontSize: 11, fontWeight: 'bold', color: COLORS.primaryDark }
     }]
   });
   return chart;
