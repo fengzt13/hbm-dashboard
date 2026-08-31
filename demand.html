@@ -63,7 +63,7 @@
     <div class="card">
       <div class="card-title">需求场景拆分 <span class="badge">2026 vs 2027</span></div>
       <table>
-        <thead><tr><th>场景</th><th>2026占比</th><th>2027占比</th><th>趋势</th></tr></thead>
+        <thead><tr><th>场景</th><th class="num">2026占比</th><th class="num">2027占比</th><th>趋势</th></tr></thead>
         <tbody>
           <tr><td>AI训练服务器</td><td class="num">72%</td><td class="num">55%</td><td><span class="tag tag-blue">短期主力</span></td></tr>
           <tr><td>高并发推理/Agent</td><td class="num">28%</td><td class="num warn">40%</td><td><span class="tag tag-red">第二增长曲线</span></td></tr>
@@ -102,7 +102,7 @@
 renderGpuSpecTable();
 function renderGpuSpecTable() {
   const data = HBM_DATA.demand.gpuSpecs;
-  let html = '<table><thead><tr><th>GPU/芯片</th><th>架构</th><th>HBM代际</th><th>HBM容量</th><th>带宽</th><th>堆叠层数</th><th>量产年</th></tr></thead><tbody>';
+  let html = '<table><thead><tr><th>GPU/芯片</th><th>架构</th><th>HBM代际</th><th class="num">HBM容量</th><th class="num">带宽</th><th class="num">堆叠层数</th><th class="num">量产年</th></tr></thead><tbody>';
   data.forEach(g => {
     html += `<tr><td class="highlight">${g.gpu}</td><td>${g.arch}</td><td>${g.hbmGen}</td><td class="num">${g.hbmCapacity}</td><td class="num">${g.bandwidth}</td><td class="num">${g.hbmStacks}</td><td class="num">${g.launchYear}</td></tr>`;
   });

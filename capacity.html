@@ -90,7 +90,7 @@ function renderRoadmap() {
   let html = '';
   data.forEach(supplier => {
     html += `<h4 style="color:var(--primary-dark); margin:16px 0 8px;">${supplier.supplier}</h4>`;
-    html += '<table><thead><tr><th>项目</th><th>时间线</th><th>新增产能</th><th>状态</th><th>备注</th></tr></thead><tbody>';
+    html += '<table><thead><tr><th>项目</th><th>时间线</th><th class="num">新增产能</th><th>状态</th><th>备注</th></tr></thead><tbody>';
     supplier.projects.forEach(p => {
       const tagClass = p.status === '建设中' ? 'tag-yellow' : (p.status === '量产中' || p.status === '部分投产' || p.status === '量产准备' ? 'tag-green' : 'tag-blue');
       html += `<tr><td class="highlight">${p.name}</td><td>${p.timeline}</td><td class="num">${p.capacity}</td><td><span class="tag ${tagClass}">${p.status}</span></td><td>${p.note}</td></tr>`;

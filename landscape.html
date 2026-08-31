@@ -106,7 +106,7 @@ renderHbm4Share();
 
 function renderHbmShareTable() {
   const data = HBM_DATA.landscape.hbmMarketShare;
-  let html = '<table><thead><tr><th>年份</th><th>SK Hynix</th><th>Samsung</th><th>Micron</th><th>备注</th></tr></thead><tbody>';
+  let html = '<table><thead><tr><th class="num">年份</th><th class="num">SK Hynix</th><th class="num">Samsung</th><th class="num">Micron</th><th>备注</th></tr></thead><tbody>';
   data.forEach(d => {
     html += `<tr><td class="num highlight">${d.year}</td><td class="num">${d.skHynix}%</td><td class="num">${d.samsung}%</td><td class="num">${d.micron}%</td><td>${d.note || ''}</td></tr>`;
   });

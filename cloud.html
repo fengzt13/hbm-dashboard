@@ -42,7 +42,7 @@
   <div class="card">
     <div class="card-title">2026年 CAPEX 全年指引</div>
     <table>
-      <thead><tr><th>公司</th><th>2026年指引</th><th>调整情况</th></tr></thead>
+      <thead><tr><th>公司</th><th class="num">2026年指引</th><th>调整情况</th></tr></thead>
       <tbody>
         <tr><td class="highlight">Amazon/AWS</td><td class="num">~$2200亿</td><td>从$2000亿上调</td></tr>
         <tr><td class="highlight">Alphabet/Google</td><td class="num">$1950-2050亿</td><td>从$1800-1900亿上调</td></tr>
@@ -110,7 +110,7 @@
 renderCustomChipsTable();
 function renderCustomChipsTable() {
   const data = HBM_DATA.cloud.customChips;
-  let html = '<table><thead><tr><th>公司</th><th>芯片</th><th>HBM容量</th><th>备注</th></tr></thead><tbody>';
+  let html = '<table><thead><tr><th>公司</th><th>芯片</th><th class="num">HBM容量</th><th>备注</th></tr></thead><tbody>';
   data.forEach(c => {
     html += `<tr><td>${c.company}</td><td class="highlight">${c.chip}</td><td class="num">${c.hbmCapacity}</td><td>${c.note}</td></tr>`;
   });

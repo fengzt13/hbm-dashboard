@@ -48,7 +48,7 @@
     <div class="card">
       <div class="card-title">存储产品价格涨幅对比 <span class="badge">2025H2-2027E</span></div>
       <table>
-        <thead><tr><th>产品</th><th>2025H2</th><th>2026E</th><th>2027E</th></tr></thead>
+        <thead><tr><th>产品</th><th class="num">2025H2</th><th class="num">2026E</th><th class="num">2027E</th></tr></thead>
         <tbody>
           <tr><td>服务器DRAM合约价</td><td class="num warn">+64%</td><td class="num warn">+270%(预估)</td><td>-</td></tr>
           <tr><td>企业级SSD</td><td class="num warn">+35%</td><td class="num warn">+235%(预估)</td><td>-</td></tr>
@@ -62,7 +62,7 @@
     <div class="card">
       <div class="card-title">美银 HBM 价格预测</div>
       <table>
-        <thead><tr><th>年份</th><th>均价($/GB)</th><th>备注</th></tr></thead>
+        <thead><tr><th class="num">年份</th><th class="num">均价($/GB)</th><th>备注</th></tr></thead>
         <tbody>
           <tr><td>2025</td><td class="num highlight">$14.3</td><td>美银预测均价</td></tr>
           <tr><td>2026</td><td class="num highlight">$14.3</td><td>实际已超预期</td></tr>
@@ -113,7 +113,7 @@
 renderGenTable();
 function renderGenTable() {
   const data = HBM_DATA.price.byGeneration;
-  let html = '<table><thead><tr><th>世代</th><th>量产年份</th><th>价格($/GB)</th><th>容量范围</th><th>带宽</th><th>状态</th></tr></thead><tbody>';
+  let html = '<table><thead><tr><th>世代</th><th class="num">量产年份</th><th class="num">价格($/GB)</th><th class="num">容量范围</th><th class="num">带宽</th><th>状态</th></tr></thead><tbody>';
   data.forEach(d => {
     const tagClass = d.status === '规模量产' ? 'tag-red' : (d.status === '主流在产' ? 'tag-blue' : (d.status === '存量主力' ? 'tag-green' : 'tag-yellow'));
     html += `<tr><td class="highlight">${d.gen}</td><td class="num">${d.launchYear}</td><td class="num">${d.pricePerGB}</td><td class="num">${d.capacity}</td><td class="num">${d.bandwidth}</td><td><span class="tag ${tagClass}">${d.status}</span></td></tr>`;
