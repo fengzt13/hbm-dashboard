@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBM 库存监控 - HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html" class="active">库存监控</a>
+    <a href="demand.html">需求监控</a>
+    <a href="expansion.html">扩产情况</a>
+    <a href="cloud.html">云厂商需求</a>
+    <a href="landscape.html">竞争格局</a>
+  </div>
+  <div class="navbar-meta">最后更新: 2026-08-31</div>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">HBM 库存监控</h1>
+  <p class="page-subtitle">供应商库存周转 · 客户端库存水位 · 库存预警信号</p>
+
+  <div class="metric-grid">
+    <div class="metric-card"><div class="label">SK Hynix 库存周转</div><div class="value">22<span class="unit">天</span></div><div class="change down">↓ 持续去化</div></div>
+    <div class="metric-card"><div class="label">Samsung 库存周转</div><div class="value">25<span class="unit">天</span></div><div class="change down">↓ 持续去化</div></div>
+    <div class="metric-card"><div class="label">Micron 库存周转</div><div class="value">27<span class="unit">天</span></div><div class="change down">↓ 持续去化</div></div>
+    <div class="metric-card"><div class="label">NVIDIA 库存可用</div><div class="value">2<span class="unit">周</span></div><div class="change warn">极低库存</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">供应商库存周转天数 <span class="badge">天数越低越景气 · 纵轴倒序</span></div>
+    <div id="chart-inventory-days" class="chart-container"></div>
+    <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
+      <b>预警阈值:</b> 正常 <60天; 警告 60-80天; 高库存 >100天。当前三家均 <30天，库存极低，需求远超供给。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">客户端库存可用周数 <span class="badge">NVIDIA / AMD / 云厂商</span></div>
+    <div id="chart-client-inventory" class="chart-container"></div>
+    <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
+      <b>预警阈值:</b> 正常 6周; 警告 10周; 高库存 >14周。当前NVIDIA仅2周、云厂商1周，处于极低库存水平。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">库存预警信号</div>
+    <table>
+      <thead><tr><th>维度</th><th>当前值</th><th>正常阈值</th><th>警告阈值</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>供应商库存周转(平均)</td><td class="highlight">~25天</td><td class="num"><60天</td><td class="num">60-100天</td><td><span class="tag tag-red">极低库存</span></td></tr>
+        <tr><td>NVIDIA库存</td><td class="highlight">2周</td><td class="num">≤6周</td><td class="num">10-14周</td><td><span class="tag tag-red">极低库存</span></td></tr>
+        <tr><td>云厂商HBM库存</td><td class="highlight">1周</td><td class="num">≤6周</td><td class="num">10-14周</td><td><span class="tag tag-red">极低库存</span></td></tr>
+        <tr><td>HBM订单覆盖期</td><td class="highlight">排至2027年</td><td>-</td><td>-</td><td><span class="tag tag-red">长协锁单</span></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; padding:12px; background:#FDE8E8; border-radius:6px; font-size:13px; color:#c0392b;">
+      <b>结论:</b> 全产业链库存处于极低水平。供应商、芯片厂商、云厂商三个环节库存均远低于安全水位。
+      叠加9家头部客户3-5年长协锁单50%+产能，HBM订单已排至2027年，价格涨超200%仍缺货。
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>HBM 景气度监控看板 v1.0 | 数据来源: TrendForce / 各厂财报</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

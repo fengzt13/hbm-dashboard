@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>云厂商需求 - HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html">库存监控</a>
+    <a href="demand.html">需求监控</a>
+    <a href="expansion.html">扩产情况</a>
+    <a href="cloud.html" class="active">云厂商需求</a>
+    <a href="landscape.html">竞争格局</a>
+  </div>
+  <div class="navbar-meta">最后更新: 2026-08-31</div>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">云厂商需求</h1>
+  <p class="page-subtitle">四大云厂商AI资本开支 · GPU采购量 · 自研芯片HBM用量 · 存储成本占比</p>
+
+  <div class="metric-grid">
+    <div class="metric-card"><div class="label">四大云厂季度CAPEX</div><div class="value">$171<span class="unit">B</span></div><div class="change up">↑ 2026Q2 合计</div></div>
+    <div class="metric-card"><div class="label">五巨头2026年CAPEX(大摩)</div><div class="value">$800<span class="unit">B</span></div><div class="change up">2025年的两倍</div></div>
+    <div class="metric-card"><div class="label">存储占云厂CAPEX</div><div class="value">47→68<span class="unit">%</span></div><div class="change up">2026→2027</div></div>
+    <div class="metric-card"><div class="label">全球AI基础设施支出</div><div class="value">$830<span class="unit">B</span></div><div class="change up">↑ +79% YoY (2026)</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">四大云厂商 CAPEX 走势 <span class="badge">十亿美元 · 季度</span></div>
+    <div id="chart-cloud-capex" class="chart-container"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2026年 CAPEX 全年指引</div>
+    <table>
+      <thead><tr><th>公司</th><th>2026年指引</th><th>调整情况</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">Amazon/AWS</td><td class="num">~$2200亿</td><td>从$2000亿上调</td></tr>
+        <tr><td class="highlight">Alphabet/Google</td><td class="num">$1950-2050亿</td><td>从$1800-1900亿上调</td></tr>
+        <tr><td class="highlight">Microsoft</td><td class="num">~$1750亿</td><td>会计调整后</td></tr>
+        <tr><td class="highlight">Meta</td><td class="num">$1300-1450亿</td><td>下限从$1250亿上调</td></tr>
+        <tr><td class="highlight">Oracle</td><td class="num">~$1000亿+</td><td>AI基础设施投资</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; padding:10px; background:var(--primary-light); border-radius:6px; font-size:13px; color:var(--primary-dark);">
+      <b>摩根士丹利预测:</b> 五大巨头2026年约8000亿美元(几乎是2025年的两倍，2024年的三倍)，2027年有望超过1.1万亿美元。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">存储占云厂商资本支出比重趋势</div>
+    <div style="display:flex; gap:30px; align-items:center; flex-wrap:wrap;">
+      <div style="flex:1; min-width:250px;">
+        <div style="margin-bottom:16px;">
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:4px;">2026年: DRAM+NAND占CAPEX</div>
+          <div class="progress-bar" style="height:16px;"><div class="fill" style="width:47%; background:var(--primary);"></div></div>
+          <div style="font-size:24px; font-weight:bold; margin-top:4px;">47%</div>
+        </div>
+        <div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:4px;">2027年预估: DRAM+NAND占CAPEX</div>
+          <div class="progress-bar" style="height:16px;"><div class="fill" style="width:68%; background:var(--red);"></div></div>
+          <div style="font-size:24px; font-weight:bold; margin-top:4px; color:var(--red);">68%</div>
+        </div>
+      </div>
+      <div style="flex:1; min-width:300px; padding:16px; background:#FDE8E8; border-radius:8px; font-size:13px; color:#c0392b;">
+        <b>TrendForce 2026.08 报告:</b><br/><br/>
+        云端大厂每投入100元，就有近70元流向存储。短短一年间存储占比从47%升至68%(+21pp)，远超历史上任何一次结构性变化。<br/><br/>
+        英伟达已宣布2027年起AI服务器涨价超15%，主要因HBM成本飙升。存储涨价→芯片涨价→资本开支扩大的恶性循环链。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">云厂商自研AI芯片 HBM 用量</div>
+    <div id="custom-chips-table"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HBM 间接需求推算</div>
+    <div style="padding:16px; background:var(--primary-light); border-radius:8px; font-size:14px; color:var(--primary-dark);">
+      <b>推算逻辑:</b> HBM间接需求 = 云厂商CAPEX × GPU/算力占比 × HBM单用量<br/><br/>
+      <b>2026年量化估算:</b><br/>
+      • 四大云厂CAPEX ~$7300亿/年<br/>
+      • GPU/算力占比 ~60% = $4380亿<br/>
+      • 存储占算力成本 ~63% = $2760亿<br/>
+      • HBM占存储 ~50% = $1380亿<br/><br/>
+      <b>结论:</b> 仅四大云厂商2026年间接拉动的HBM需求就接近1400亿美元，与美银预测的2026年HBM市场2694亿美元(窄口径)高度吻合。
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>HBM 景气度监控看板 v1.0 | 数据来源: AWS/Microsoft/Google/Meta财报 / TrendForce / 大摩 / IDC</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+renderCustomChipsTable();
+function renderCustomChipsTable() {
+  const data = HBM_DATA.cloud.customChips;
+  let html = '<table><thead><tr><th>公司</th><th>芯片</th><th>HBM容量</th><th>备注</th></tr></thead><tbody>';
+  data.forEach(c => {
+    html += `<tr><td>${c.company}</td><td class="highlight">${c.chip}</td><td class="num">${c.hbmCapacity}</td><td>${c.note}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('custom-chips-table').innerHTML = html;
+}
+</script>
+</body>
+</html>

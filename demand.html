@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBM 需求监控 - HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html">库存监控</a>
+    <a href="demand.html" class="active">需求监控</a>
+    <a href="expansion.html">扩产情况</a>
+    <a href="cloud.html">云厂商需求</a>
+    <a href="landscape.html">竞争格局</a>
+  </div>
+  <div class="navbar-meta">最后更新: 2026-08-31</div>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">HBM 需求监控</h1>
+  <p class="page-subtitle">AI GPU出货量 · 单GPU HBM用量 · 需求结构拆分 · 需求驱动因素</p>
+
+  <div class="metric-grid">
+    <div class="metric-card"><div class="label">2026年HBM需求量</div><div class="value">50<span class="unit">百万GB</span></div><div class="change up">↑ 127% YoY</div></div>
+    <div class="metric-card"><div class="label">NVIDIA数据中心季度营收</div><div class="value">$623<span class="unit">亿</span></div><div class="change up">↑ 75% YoY</div></div>
+    <div class="metric-card"><div class="label">AI训练需求占比</div><div class="value">72<span class="unit">%</span></div><div class="change neutral">2027年降至55%</div></div>
+    <div class="metric-card"><div class="label">推理需求占比</div><div class="value">28<span class="unit">%</span></div><div class="change up">2027年升至40%</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">NVIDIA 数据中心营收走势 <span class="badge">百万美元 · 按自然季度</span></div>
+    <div id="chart-nvidia-revenue" class="chart-container"></div>
+    <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
+      <b>NVIDIA FY2026 (2025.2-2026.1):</b> 全年收入2159亿美元(+65% YoY)，数据中心收入1937亿美元(+68% YoY)。
+      FY2027Q1指引: 780亿美元(±2%)。黄仁勋: "Blackwell销量远超预期，云端GPU已售罄。"
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">HBM 需求量走势 <span class="badge">百万GB</span></div>
+      <div id="chart-hbm-demand" class="chart-container-sm"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">2026年 HBM 需求结构 <span class="badge">按客户</span></div>
+      <div id="chart-demand-pie" class="chart-container-sm"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">主要AI芯片 HBM 用量规格</div>
+    <div id="gpu-spec-table"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">需求场景拆分 <span class="badge">2026 vs 2027</span></div>
+      <table>
+        <thead><tr><th>场景</th><th>2026占比</th><th>2027占比</th><th>趋势</th></tr></thead>
+        <tbody>
+          <tr><td>AI训练服务器</td><td class="num">72%</td><td class="num">55%</td><td><span class="tag tag-blue">短期主力</span></td></tr>
+          <tr><td>高并发推理/Agent</td><td class="num">28%</td><td class="num warn">40%</td><td><span class="tag tag-red">第二增长曲线</span></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px; padding:10px; background:var(--primary-light); border-radius:6px; font-size:12px; color:var(--primary-dark);">
+        <b>关键判断:</b> 推理需求具备持续性，不会随单轮算力采购周期回落，HBM从训练专用耗材变为数据中心标配基础硬件。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">需求驱动因素</div>
+      <table>
+        <thead><tr><th>驱动因素</th><th>影响</th></tr></thead>
+        <tbody>
+          <tr><td>大模型参数量增长</td><td>LLM参数每年增长10倍，驱动HBM容量需求</td></tr>
+          <tr><td>AI推理规模化</td><td>Agent/推理卡放量，2027年推理需求占比40%</td></tr>
+          <tr><td>GPU单卡HBM容量翻倍</td><td>B200(192GB)→Rubin(288GB)→Rubin Ultra(576GB)</td></tr>
+          <tr><td>云厂商自研芯片放量</td><td>TPU/Trainium/MTIA均需HBM，占比27%</td></tr>
+          <tr><td>NVL72机柜HBM翻倍</td><td>单台NVL72较上代HBM搭载量翻倍</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>HBM 景气度监控看板 v1.0 | 数据来源: NVIDIA财报 / AMD / TrendForce / 美银</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+renderGpuSpecTable();
+function renderGpuSpecTable() {
+  const data = HBM_DATA.demand.gpuSpecs;
+  let html = '<table><thead><tr><th>GPU/芯片</th><th>架构</th><th>HBM代际</th><th>HBM容量</th><th>带宽</th><th>堆叠层数</th><th>量产年</th></tr></thead><tbody>';
+  data.forEach(g => {
+    html += `<tr><td class="highlight">${g.gpu}</td><td>${g.arch}</td><td>${g.hbmGen}</td><td class="num">${g.hbmCapacity}</td><td class="num">${g.bandwidth}</td><td class="num">${g.hbmStacks}</td><td class="num">${g.launchYear}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('gpu-spec-table').innerHTML = html;
+}
+</script>
+</body>
+</html>

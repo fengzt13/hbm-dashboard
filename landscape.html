@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞争格局 - HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html">库存监控</a>
+    <a href="demand.html">需求监控</a>
+    <a href="expansion.html">扩产情况</a>
+    <a href="cloud.html">云厂商需求</a>
+    <a href="landscape.html" class="active">竞争格局</a>
+  </div>
+  <div class="navbar-meta">最后更新: 2026-08-31</div>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">竞争格局与技术路线</h1>
+  <p class="page-subtitle">市场份额演变 · 技术路线对比 · 客户绑定关系 · HBM市场规模</p>
+
+  <div class="metric-grid">
+    <div class="metric-card"><div class="label">SK Hynix HBM4份额</div><div class="value">54<span class="unit">%</span></div><div class="change up">美银预测2026</div></div>
+    <div class="metric-card"><div class="label">Samsung HBM4份额</div><div class="value">28<span class="unit">%</span></div><div class="change neutral">快速爬坡</div></div>
+    <div class="metric-card"><div class="label">Micron HBM4份额</div><div class="value">18<span class="unit">%</span></div><div class="change up">北美客户优势</div></div>
+    <div class="metric-card"><div class="label">HBM毛利率</div><div class="value">45-60<span class="unit">%</span></div><div class="change up">远超通用DRAM</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DRAM 市占率季度走势 <span class="badge">%</span></div>
+    <div id="chart-dram-share" class="chart-container"></div>
+    <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
+      <b>格局变化:</b> SK Hynix 2025Q1首次DRAM市占率超越三星(36.2% vs 36.0%)，但2025Q4三星凭借HBM4放量重夺第一(36.6% vs 32.9%)。
+      两家交替领先，HBM成为决定DRAM排名的关键变量。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HBM 市占率年度走势 <span class="badge">窄口径 · HBM成品</span></div>
+    <div id="hbm-share-table"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">技术路线对比</div>
+    <div id="tech-roadmap"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">客户绑定关系</div>
+      <div id="customer-binding"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">HBM 市场规模预测 <span class="badge">美银 · 窄口径</span></div>
+      <div id="chart-market-size" class="chart-container-sm"></div>
+      <div style="margin-top:8px; font-size:12px; color:var(--text-secondary);">
+        2025: $64.6B → 2026: $269.4B(+317%) → 2030: $836.1B
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HBM4 出货份额预测 <span class="badge">美银 2026</span></div>
+    <div id="hbm4-share"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">盈利能力对比</div>
+    <table>
+      <thead><tr><th>指标</th><th>HBM</th><th>通用DRAM</th><th>差异</th></tr></thead>
+      <tbody>
+        <tr><td>毛利率</td><td class="highlight">45%-60%</td><td>15%-25%</td><td class="warn">+20-35pp</td></tr>
+        <tr><td>价格(相对DDR5)</td><td class="highlight">~5倍</td><td>1倍</td><td class="warn">5x溢价</td></tr>
+        <tr><td>晶圆消耗</td><td class="highlight">3-4倍普通DRAM</td><td>1倍</td><td class="warn">产能虹吸</td></tr>
+        <tr><td>需求增长</td><td class="highlight">+317%(2026 YoY)</td><td>+242%(2026 ASP)</td><td>量价齐升</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; padding:10px; background:var(--primary-light); border-radius:6px; font-size:13px; color:var(--primary-dark);">
+      <b>盈利核心结论:</b> 2026-2027三大存储厂商净利润增量70%以上由HBM业务贡献。行业商业模式从周期波动转向高成长赛道。
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>HBM 景气度监控看板 v1.0 | 数据来源: TrendForce / Omdia / 美银 / 各厂财报</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+renderHbmShareTable();
+renderTechRoadmap();
+renderCustomerBinding();
+renderHbm4Share();
+
+function renderHbmShareTable() {
+  const data = HBM_DATA.landscape.hbmMarketShare;
+  let html = '<table><thead><tr><th>年份</th><th>SK Hynix</th><th>Samsung</th><th>Micron</th><th>备注</th></tr></thead><tbody>';
+  data.forEach(d => {
+    html += `<tr><td class="num highlight">${d.year}</td><td class="num">${d.skHynix}%</td><td class="num">${d.samsung}%</td><td class="num">${d.micron}%</td><td>${d.note || ''}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('hbm-share-table').innerHTML = html;
+}
+
+function renderTechRoadmap() {
+  const data = HBM_DATA.landscape.techRoadmap;
+  let html = '<table><thead><tr><th>厂商</th><th>HBM3</th><th>HBM3E</th><th>HBM4</th><th>HBM4E</th><th>HBM5</th><th>核心优势</th></tr></thead><tbody>';
+  data.forEach(d => {
+    html += `<tr><td class="highlight">${d.supplier}</td><td>${d.hbm3}</td><td>${d.hbm3e}</td><td class="warn">${d.hbm4}</td><td>${d.hbm4e}</td><td>${d.hbm5}</td><td>${d.advantage}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('tech-roadmap').innerHTML = html;
+}
+
+function renderCustomerBinding() {
+  const data = HBM_DATA.landscape.customerBinding;
+  let html = '<table><thead><tr><th>供应商</th><th>主要客户</th><th>备注</th></tr></thead><tbody>';
+  data.forEach(d => {
+    html += `<tr><td class="highlight">${d.supplier}</td><td>${d.customers.join('、')}</td><td>${d.note}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('customer-binding').innerHTML = html;
+}
+
+function renderHbm4Share() {
+  const data = HBM_DATA.landscape.hbm4Share;
+  let html = '<div style="display:flex; gap:20px; flex-wrap:wrap;">';
+  data.forEach((d, i) => {
+    const colors = [COLORS.skHynix, COLORS.samsung, COLORS.micron];
+    html += `<div style="flex:1; min-width:200px; text-align:center; padding:20px; border:1px solid var(--border); border-radius:8px;">
+      <div style="font-size:36px; font-weight:800; color:${colors[i]};">${d.share}%</div>
+      <div style="font-size:16px; font-weight:600; margin:8px 0;">${d.supplier}</div>
+      <div style="font-size:12px; color:var(--text-secondary);">${d.note}</div>
+    </div>`;
+  });
+  html += '</div>';
+  document.getElementById('hbm4-share').innerHTML = html;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html" class="active">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html">库存监控</a>
+    <a href="demand.html">需求监控</a>
+    <a href="expansion.html">扩产情况</a>
+    <a href="cloud.html">云厂商需求</a>
+    <a href="landscape.html">竞争格局</a>
+  </div>
+  <div class="navbar-meta">最后更新: 2026-08-31 | 月度更新</div>
+</nav>
+
+<div class="container">
+
+  <!-- 标题 -->
+  <h1 class="page-title">HBM 景气度总览</h1>
+  <p class="page-subtitle">高带宽存储器全产业链供需态势 · 价格 · 产能 · 库存 · 需求 · 扩产 · 云厂商采购</p>
+
+  <!-- 核心指标卡片 -->
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">HBM 均价</div>
+      <div class="value" id="metric-price">$16.8</div>
+      <div class="change up">↑ 12.7% 环比</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">全球月产能</div>
+      <div class="value" id="metric-capacity">795 <span class="unit">千片/月</span></div>
+      <div class="change neutral">三大厂合计等效晶圆</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">供应商库存周转</div>
+      <div class="value" id="metric-inventory">25 <span class="unit">天</span></div>
+      <div class="change down">↓ 库存持续去化</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">四大云厂季度CAPEX</div>
+      <div class="value" id="metric-cloud-capex">$171B</div>
+      <div class="change up">↑ AI基础设施投资加速</div>
+    </div>
+  </div>
+
+  <!-- 景气度指数仪表盘 -->
+  <div class="prosperity-section">
+    <div class="gauge-card">
+      <div class="gauge-title">当前景气度（方案A · 供需主导）</div>
+      <div id="chart-prosperity-current" class="chart-container"></div>
+      <div class="gauge-sub">供需缺口率 +18.2% · 价格环比 +28% · 利用率 99% · 库存 22天</div>
+    </div>
+    <div class="gauge-card">
+      <div class="gauge-title">预期景气度（方案C · 先行预判）</div>
+      <div id="chart-prosperity-expected" class="chart-container"></div>
+      <div class="gauge-sub">云厂CAPEX加速 · GPU订单排至2027 · 扩产周期24-36个月</div>
+    </div>
+  </div>
+
+  <!-- 景气度趋势 -->
+  <div class="card">
+    <div class="card-title">景气度趋势：当前 vs 预期 <span class="badge">2023Q1 - 2027Q2</span></div>
+    <div id="chart-prosperity-trend" class="chart-container"></div>
+    <div style="margin-top:12px; padding:12px; background:#FAFBFC; border-radius:6px; font-size:13px; color:var(--text-secondary);">
+      <b>趋势解读：</b> 当前景气度92分（极高景气），预期景气度93分（持续上行）。预期>当前，趋势信号为<b style="color:#e74c3c">上行</b>。
+      供需缺口持续扩大至+18.2%，HBM订单已排至2027年，价格涨超200%仍缺货。2027年下半年新产能释放或为拐点窗口。
+    </div>
+  </div>
+
+  <!-- 供需平衡 -->
+  <div class="card">
+    <div class="card-title">供需平衡图 <span class="badge">季度</span></div>
+    <div id="chart-supply-demand" class="supply-demand-chart"></div>
+  </div>
+
+  <div class="grid-2">
+    <!-- HBM均价 -->
+    <div class="card">
+      <div class="card-title">HBM 均价走势 <span class="badge">$/GB</span></div>
+      <div id="chart-price-trend" class="chart-container-sm"></div>
+    </div>
+
+    <!-- 三大供应商产能 -->
+    <div class="card">
+      <div class="card-title">三大供应商产能 <span class="badge">千片/月</span></div>
+      <div id="chart-capacity" class="chart-container-sm"></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <!-- NVIDIA营收 -->
+    <div class="card">
+      <div class="card-title">NVIDIA 数据中心营收 <span class="badge">百万美元</span></div>
+      <div id="chart-nvidia-revenue" class="chart-container-sm"></div>
+    </div>
+
+    <!-- 云厂商CAPEX -->
+    <div class="card">
+      <div class="card-title">四大云厂商 CAPEX 走势 <span class="badge">十亿美元</span></div>
+      <div id="chart-cloud-capex" class="chart-container-sm"></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <!-- HBM市场规模 -->
+    <div class="card">
+      <div class="card-title">HBM 市场规模预测 <span class="badge">美银 · 窄口径</span></div>
+      <div id="chart-market-size" class="chart-container-sm"></div>
+    </div>
+
+    <!-- 最新动态 -->
+    <div class="card">
+      <div class="card-title">最新动态 <span class="badge">近30天</span></div>
+      <div id="timeline-news"></div>
+    </div>
+  </div>
+
+  <!-- 关键数据摘要 -->
+  <div class="card">
+    <div class="card-title">关键数据摘要</div>
+    <table>
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th>最新值</th>
+          <th>同比/环比变化</th>
+          <th>趋势判断</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HBM 均价</td>
+          <td class="highlight">$16.8/GB (2026Q2)</td>
+          <td class="warn">+12.7% QoQ / +44.8% YoY</td>
+          <td><span class="tag tag-red">持续上涨</span></td>
+        </tr>
+        <tr>
+          <td>HBM 全球月产能</td>
+          <td class="highlight">795千片/月 (2026Q2)</td>
+          <td>+22.1% QoQ</td>
+          <td><span class="tag tag-blue">产能扩张中</span></td>
+        </tr>
+        <tr>
+          <td>产能利用率</td>
+          <td class="highlight">~98%</td>
+          <td class="warn">接近满载</td>
+          <td><span class="tag tag-red">极高景气</span></td>
+        </tr>
+        <tr>
+          <td>供应商库存周转</td>
+          <td class="highlight">22-27天 (2026Q2)</td>
+          <td class="warn">↓ 持续去化</td>
+          <td><span class="tag tag-red">低库存预警</span></td>
+        </tr>
+        <tr>
+          <td>供需缺口率</td>
+          <td class="highlight">+18.2% (2026Q2)</td>
+          <td class="warn">缺口持续扩大</td>
+          <td><span class="tag tag-red">严重供不应求</span></td>
+        </tr>
+        <tr>
+          <td>四大云厂季度CAPEX</td>
+          <td class="highlight">$1712亿 (2026Q2)</td>
+          <td>+79% YoY</td>
+          <td><span class="tag tag-red">需求加速</span></td>
+        </tr>
+        <tr>
+          <td>NVIDIA数据中心季度营收</td>
+          <td class="highlight">$623亿 (FY26Q4)</td>
+          <td>+75% YoY</td>
+          <td><span class="tag tag-red">需求强劲</span></td>
+        </tr>
+        <tr>
+          <td>存储占云厂CAPEX比重</td>
+          <td class="highlight">47% (2026) → 68% (2027预估)</td>
+          <td class="warn">+21pp</td>
+          <td><span class="tag tag-red">成本结构剧变</span></td>
+        </tr>
+        <tr>
+          <td>HBM占DRAM产值</td>
+          <td class="highlight">~31% (2026)</td>
+          <td>较2023年8%大幅提升</td>
+          <td><span class="tag tag-blue">结构性转移</span></td>
+        </tr>
+        <tr>
+          <td>HBM毛利率</td>
+          <td class="highlight">45%-60%</td>
+          <td>远高于通用DRAM 15-25%</td>
+          <td><span class="tag tag-green">高盈利</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">景气度指数方法论</div>
+    <div class="grid-2">
+      <div>
+        <h4 style="color:var(--primary-dark); margin-bottom:8px;">方案A · 供需平衡主导型（当前景气度）</h4>
+        <table>
+          <thead><tr><th>指标</th><th>权重</th><th>含义</th></tr></thead>
+          <tbody>
+            <tr><td>供需缺口率</td><td class="num">40%</td><td>(需求-供给)/需求，正值=供不应求</td></tr>
+            <tr><td>价格环比趋势</td><td class="num">25%</td><td>季度均价环比涨幅，±10%封顶</td></tr>
+            <tr><td>库存周转天数</td><td class="num">20%</td><td>供应商+客户端加权，反向打分</td></tr>
+            <tr><td>产能利用率</td><td class="num">15%</td><td>实际产出/设计产能，>90%=高景气</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h4 style="color:var(--primary-dark); margin-bottom:8px;">方案C · 先行指标驱动型（预期景气度）</h4>
+        <table>
+          <thead><tr><th>指标</th><th>权重</th><th>领先周期</th></tr></thead>
+          <tbody>
+            <tr><td>云厂商AI CAPEX</td><td class="num">30%</td><td>领先2-3季度</td></tr>
+            <tr><td>GPU订单/出货预期</td><td class="num">25%</td><td>领先1-2季度</td></tr>
+            <tr><td>扩产投资节奏</td><td class="num">20%</td><td>领先4-6季度</td></tr>
+            <tr><td>当前价格动量</td><td class="num">15%</td><td>同步指标</td></tr>
+            <tr><td>库存水位</td><td class="num">10%</td><td>领先1季度</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:12px; background:var(--primary-light); border-radius:6px; font-size:13px; color:var(--primary-dark);">
+      <b>趋势信号判断：</b> 预期指数 > 当前指数 → 景气上行；预期 < 当前 → 景气下行；两者趋同 → 趋势延续。
+      当前预期(93)略高于当前(92)，剪刀差+1，趋势信号为<b>上行</b>。
+    </div>
+  </div>
+
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  <p>HBM 景气度监控看板 v1.0 | 数据来源: TrendForce / Omdia / 美银 / NVIDIA财报 / 各厂财报</p>
+  <p style="margin-top:4px;">数据均来自公开信息整理，仅供研究参考，不构成投资建议</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

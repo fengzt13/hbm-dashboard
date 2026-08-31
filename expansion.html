@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBM 扩产情况 - HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html">库存监控</a>
+    <a href="demand.html">需求监控</a>
+    <a href="expansion.html" class="active">扩产情况</a>
+    <a href="cloud.html">云厂商需求</a>
+    <a href="landscape.html">竞争格局</a>
+  </div>
+  <div class="navbar-meta">最后更新: 2026-08-31</div>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">HBM 扩产情况</h1>
+  <p class="page-subtitle">三大厂资本开支 · 新产线进度 · 长期供应协议 · 关键事件</p>
+
+  <div class="metric-grid">
+    <div class="metric-card"><div class="label">三厂2026合计CAPEX</div><div class="value">$98<span class="unit">B</span></div><div class="change up">均创历史新高</div></div>
+    <div class="metric-card"><div class="label">全球DRAM总CAPEX</div><div class="value">$120<span class="unit">B</span></div><div class="change up">↑ +65% YoY</div></div>
+    <div class="metric-card"><div class="label">HBM占CAPEX比重</div><div class="value">50<span class="unit">%</span></div><div class="change up">60%新增先进晶圆优先HBM</div></div>
+    <div class="metric-card"><div class="label">长期协议金额</div><div class="value">~$2T<span class="unit"></span></div><div class="change up">近2万亿美元(至2030)</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">三大厂年度资本开支 <span class="badge">十亿美元</span></div>
+    <div id="chart-capex" class="chart-container"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HBM 占资本开支比重变化</div>
+    <table>
+      <thead><tr><th>年份</th><th>HBM占CAPEX比重</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="num">2023</td><td class="num">15%</td><td>AI需求初期</td></tr>
+        <tr><td class="num">2024</td><td class="num">25%</td><td>H100放量驱动</td></tr>
+        <tr><td class="num">2025</td><td class="num">35%</td><td>HBM3E量产</td></tr>
+        <tr><td class="num highlight">2026</td><td class="num warn">50%</td><td>新增先进晶圆60%优先供给HBM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">长期供应协议 <span class="badge">近2万亿美元</span></div>
+    <table>
+      <thead><tr><th>签约方</th><th>金额</th><th>期限</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">SK Hynix ↔ 英伟达等美国科技公司</td><td class="num warn">$7500亿</td><td>至2030年</td><td>长期存储芯片供应协议</td></tr>
+        <tr><td class="highlight">三星 ↔ 博通</td><td class="num warn">$2000亿</td><td>多年期</td><td>合作备忘录</td></tr>
+        <tr><td class="highlight">英伟达 ↔ SK集团</td><td class="num warn">$5000亿+</td><td>至2030年</td><td>AI基础设施计划</td></tr>
+        <tr><td class="highlight">9家头部客户 ↔ 三大厂</td><td class="num">锁定50%+产能</td><td>3-5年</td><td>AWS/Azure/Google Cloud等</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; padding:12px; background:#FDE8E8; border-radius:6px; font-size:13px; color:#c0392b;">
+      <b>核心影响:</b> 头部客户锁单行为进一步加剧市场紧张，中小厂商几乎无货可拿。
+      三大厂2026全部HBM产能已提前1-3年被长协锁死，无现货余量。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">扩产关键事件时间轴</div>
+    <div id="key-events"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">扩产周期与瓶颈分析</div>
+    <div class="grid-2">
+      <div>
+        <h4 style="color:var(--primary-dark); margin-bottom:8px;">扩产周期</h4>
+        <table>
+          <thead><tr><th>环节</th><th>周期</th></tr></thead>
+          <tbody>
+            <tr><td>HBM配套产线建设</td><td class="num">24-36个月</td></tr>
+            <tr><td>TSV刻蚀产能</td><td class="num">12-18个月</td></tr>
+            <tr><td>混合键合设备</td><td class="num">12-18个月</td></tr>
+            <tr><td>堆叠封装产线</td><td class="num">18-24个月</td></tr>
+            <tr><td>新晶圆厂从动工到量产</td><td class="num">36-48个月</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h4 style="color:var(--primary-dark); margin-bottom:8px;">产能瓶颈</h4>
+        <table>
+          <thead><tr><th>瓶颈环节</th><th>状态</th></tr></thead>
+          <tbody>
+            <tr><td>TSV/键合设备</td><td><span class="tag tag-red">紧缺</span></td></tr>
+            <tr><td>CoWoS先进封装</td><td><span class="tag tag-red">紧缺</span></td></tr>
+            <tr><td>EUV光刻机</td><td><span class="tag tag-yellow">受限</span></td></tr>
+            <tr><td>DRAM先进制程晶圆</td><td><span class="tag tag-red">极度紧缺</span></td></tr>
+            <tr><td>HBM良率(尤其HBM4)</td><td><span class="tag tag-yellow">爬坡中</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:12px; padding:10px; background:var(--primary-light); border-radius:6px; font-size:12px; color:var(--primary-dark);">
+      <b>关键判断:</b> 单颗HBM堆叠芯片消耗3-4倍普通DRAM晶圆。2026年全球DRAM总资本开支+65%，但新增先进晶圆60%优先供给HBM，挤压消费/PC端DRAM供给。
+      扩产周期长 + 长协锁单 = 2027年前供需缺口难以实质性收窄。
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>HBM 景气度监控看板 v1.0 | 数据来源: 各厂财报 / TrendForce / 公开新闻</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+renderKeyEvents();
+function renderKeyEvents() {
+  const data = HBM_DATA.expansion.keyEvents;
+  let html = '<ul class="timeline">';
+  data.forEach(item => {
+    const tagClass = item.impact === '高' ? 'tag-red' : (item.impact === '中' ? 'tag-orange' : 'tag-blue');
+    html += `<li class="timeline-item">
+      <div class="timeline-date">${item.date} <span class="tag ${tagClass}" style="margin-left:6px;">${item.impact}影响</span></div>
+      <div class="timeline-title">${item.event}</div>
+      <div class="timeline-category">影响: ${item.impact}</div>
+    </li>`;
+  });
+  html += '</ul>';
+  document.getElementById('key-events').innerHTML = html;
+}
+</script>
+</body>
+</html>
