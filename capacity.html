@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav class="navbar">
-  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-brand"><span class="icon">📊</span> 广州番禺有趣打工仔小冯的HBM监控看板</div>
   <div class="navbar-nav">
     <a href="index.html">景气度总览</a>
     <a href="price.html">价格监控</a>
@@ -20,7 +20,7 @@
     <a href="cloud.html">云厂商需求</a>
     <a href="landscape.html">竞争格局</a>
   </div>
-  <div class="navbar-meta">最后更新: 2026-08-31</div>
+  <div class="navbar-meta">数据截至: 2026Q2</div>
 </nav>
 
 <div class="container">
@@ -28,19 +28,19 @@
   <p class="page-subtitle">三大供应商产能 · 利用率 · HBM占DRAM比重 · 扩张路线图</p>
 
   <div class="metric-grid">
-    <div class="metric-card"><div class="label">全球HBM月产能</div><div class="value">795<span class="unit">千片/月</span></div><div class="change up">↑ 22.1% QoQ</div></div>
-    <div class="metric-card"><div class="label">平均产能利用率</div><div class="value">98<span class="unit">%</span></div><div class="change warn">接近满载</div></div>
-    <div class="metric-card"><div class="label">HBM占DRAM产值</div><div class="value">31<span class="unit">%</span></div><div class="change up">较2023年8%大幅提升</div></div>
-    <div class="metric-card"><div class="label">HBM+服务器RDIMM占比</div><div class="value">51<span class="unit">%</span></div><div class="change">占DRAM位元供应量</div></div>
+    <div class="metric-card"><div class="label">全球HBM月产能</div><div class="value">795<span class="unit">千片/月</span></div><div class="change up">↑ 22.1% QoQ · +48.6% YoY</div><div class="card-date">数据截至: 2026Q2</div></div>
+    <div class="metric-card"><div class="label">平均产能利用率</div><div class="value">98<span class="unit">%</span></div><div class="change warn">较去年同期+7pp，接近满载</div><div class="card-date">数据截至: 2026Q2</div></div>
+    <div class="metric-card"><div class="label">HBM占DRAM产值</div><div class="value">31<span class="unit">%</span></div><div class="change up">较2023年8%提升23pp</div><div class="card-date">统计: 2026年</div></div>
+    <div class="metric-card"><div class="label">HBM+服务器RDIMM占比</div><div class="value">51<span class="unit">%</span></div><div class="change">占DRAM位元供应量</div><div class="card-date">统计: 2026年</div></div>
   </div>
 
   <div class="card">
-    <div class="card-title">三大供应商产能走势 <span class="badge">千片/月 · 等效12寸晶圆</span></div>
+    <div class="card-title">三大供应商产能走势 <span class="badge">千片/月 · 等效12寸晶圆</span> <span class="badge">数据截至 2026Q2</span></div>
     <div id="chart-capacity" class="chart-container"></div>
   </div>
 
   <div class="card">
-    <div class="card-title">产能利用率 <span class="badge">%</span></div>
+    <div class="card-title">产能利用率 <span class="badge">%</span> <span class="badge">数据截至 2026Q2</span></div>
     <div id="chart-utilization" class="chart-container"></div>
     <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
       <b>预警逻辑:</b> 利用率 >90% = 高景气; 85-90% = 正常; <85% = 低迷。当前三家均 >97%，行业产能利用率持续维持95%以上，不存在闲置产能缓冲需求。
@@ -49,14 +49,14 @@
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">HBM 占 DRAM 产能比重 <span class="badge">按位元</span></div>
+      <div class="card-title">HBM 占 DRAM 产能比重 <span class="badge">按位元</span> <span class="badge">数据截至 2026年</span></div>
       <div id="chart-hbm-share" class="chart-container-sm"></div>
       <div style="margin-top:8px; font-size:12px; color:var(--text-secondary);">
         2026年HBM+服务器RDIMM合计占DRAM位元供应量51%，消费级产能被大幅挤压。
       </div>
     </div>
     <div class="card">
-      <div class="card-title">技术节点演进</div>
+      <div class="card-title">技术节点演进 <span class="badge">数据截至 2026Q2</span></div>
       <table>
         <thead><tr><th>节点</th><th>量产时间</th><th>主要厂商</th><th>应用</th></tr></thead>
         <tbody>
@@ -70,14 +70,14 @@
   </div>
 
   <div class="card">
-    <div class="card-title">产能扩张路线图</div>
+    <div class="card-title">产能扩张路线图 <span class="badge">数据截至 2026Q2</span></div>
     <div id="roadmap"></div>
   </div>
 
 </div>
 
 <div class="footer">
-  <p>HBM 景气度监控看板 v1.0 | 数据来源: TrendForce / 各厂财报 / 公开新闻</p>
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.1 | 数据来源: TrendForce / 各厂财报 / 公开新闻</p>
   <div class="aigc-watermark">本文档由AI辅助生成</div>
 </div>
 

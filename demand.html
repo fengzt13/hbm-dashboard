@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav class="navbar">
-  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-brand"><span class="icon">📊</span> 广州番禺有趣打工仔小冯的HBM监控看板</div>
   <div class="navbar-nav">
     <a href="index.html">景气度总览</a>
     <a href="price.html">价格监控</a>
@@ -20,7 +20,7 @@
     <a href="cloud.html">云厂商需求</a>
     <a href="landscape.html">竞争格局</a>
   </div>
-  <div class="navbar-meta">最后更新: 2026-08-31</div>
+  <div class="navbar-meta">数据截至: 2026Q2</div>
 </nav>
 
 <div class="container">
@@ -28,14 +28,14 @@
   <p class="page-subtitle">AI GPU出货量 · 单GPU HBM用量 · 需求结构拆分 · 需求驱动因素</p>
 
   <div class="metric-grid">
-    <div class="metric-card"><div class="label">2026年HBM需求量</div><div class="value">50<span class="unit">百万GB</span></div><div class="change up">↑ 127% YoY</div></div>
-    <div class="metric-card"><div class="label">NVIDIA数据中心季度营收</div><div class="value">$623<span class="unit">亿</span></div><div class="change up">↑ 75% YoY</div></div>
-    <div class="metric-card"><div class="label">AI训练需求占比</div><div class="value">72<span class="unit">%</span></div><div class="change neutral">2027年降至55%</div></div>
-    <div class="metric-card"><div class="label">推理需求占比</div><div class="value">28<span class="unit">%</span></div><div class="change up">2027年升至40%</div></div>
+    <div class="metric-card"><div class="label">2026年HBM需求量</div><div class="value">50<span class="unit">百万GB</span></div><div class="change up">↑ 127% YoY</div><div class="card-date">统计: 2026E</div></div>
+    <div class="metric-card"><div class="label">NVIDIA数据中心季度营收</div><div class="value">$623<span class="unit">亿</span></div><div class="change up">↑ 75% YoY</div><div class="card-date">数据截至: FY26Q4</div></div>
+    <div class="metric-card"><div class="label">AI训练需求占比</div><div class="value">72<span class="unit">%</span></div><div class="change neutral">2027年降至55%</div><div class="card-date">统计: 2026年</div></div>
+    <div class="metric-card"><div class="label">推理需求占比</div><div class="value">28<span class="unit">%</span></div><div class="change up">↑ 较2025年+12pp YoY</div><div class="card-date">统计: 2026年</div></div>
   </div>
 
   <div class="card">
-    <div class="card-title">NVIDIA 数据中心营收走势 <span class="badge">百万美元 · 按自然季度</span></div>
+    <div class="card-title">NVIDIA 数据中心营收走势 <span class="badge">百万美元 · 按自然季度</span> <span class="badge">数据截至 FY26Q4</span></div>
     <div id="chart-nvidia-revenue" class="chart-container"></div>
     <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
       <b>NVIDIA FY2026 (2025.2-2026.1):</b> 全年收入2159亿美元(+65% YoY)，数据中心收入1937亿美元(+68% YoY)。
@@ -45,28 +45,28 @@
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">HBM 需求量走势 <span class="badge">百万GB</span></div>
+      <div class="card-title">HBM 需求量走势 <span class="badge">百万GB</span> <span class="badge">数据截至 2026E</span></div>
       <div id="chart-hbm-demand" class="chart-container-sm"></div>
     </div>
     <div class="card">
-      <div class="card-title">2026年 HBM 需求结构 <span class="badge">按客户</span></div>
+      <div class="card-title">2026年 HBM 需求结构 <span class="badge">按客户</span> <span class="badge">数据截至 2026E</span></div>
       <div id="chart-demand-pie" class="chart-container-sm"></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">主要AI芯片 HBM 用量规格</div>
+    <div class="card-title">主要AI芯片 HBM 用量规格 <span class="badge">数据截至 2026Q2</span></div>
     <div id="gpu-spec-table"></div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">需求场景拆分 <span class="badge">2026 vs 2027</span></div>
+      <div class="card-title">需求场景拆分 <span class="badge">2026 vs 2027</span> <span class="badge">数据截至 2026E</span></div>
       <table>
-        <thead><tr><th>场景</th><th class="num">2026占比</th><th class="num">2027占比</th><th>趋势</th></tr></thead>
+        <thead><tr><th>场景</th><th class="num">2025占比</th><th class="num">2026占比</th><th class="num">YoY变化</th><th class="num">2027占比</th><th>趋势</th></tr></thead>
         <tbody>
-          <tr><td>AI训练服务器</td><td class="num">72%</td><td class="num">55%</td><td><span class="tag tag-blue">短期主力</span></td></tr>
-          <tr><td>高并发推理/Agent</td><td class="num">28%</td><td class="num warn">40%</td><td><span class="tag tag-red">第二增长曲线</span></td></tr>
+          <tr><td>AI训练服务器</td><td class="num">80%</td><td class="num">72%</td><td class="num">-8pp YoY</td><td class="num">55%</td><td><span class="tag tag-blue">短期主力</span></td></tr>
+          <tr><td>高并发推理/Agent</td><td class="num">20%</td><td class="num warn">28%</td><td class="num warn">+8pp YoY</td><td class="num warn">40%</td><td><span class="tag tag-red">第二增长曲线</span></td></tr>
         </tbody>
       </table>
       <div style="margin-top:10px; padding:10px; background:var(--primary-light); border-radius:6px; font-size:12px; color:var(--primary-dark);">
@@ -75,7 +75,7 @@
     </div>
 
     <div class="card">
-      <div class="card-title">需求驱动因素</div>
+      <div class="card-title">需求驱动因素 <span class="badge">数据截至 2026Q2</span></div>
       <table>
         <thead><tr><th>驱动因素</th><th>影响</th></tr></thead>
         <tbody>
@@ -92,7 +92,7 @@
 </div>
 
 <div class="footer">
-  <p>HBM 景气度监控看板 v1.0 | 数据来源: NVIDIA财报 / AMD / TrendForce / 美银</p>
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.1 | 数据来源: NVIDIA财报 / AMD / TrendForce / 美银</p>
   <div class="aigc-watermark">本文档由AI辅助生成</div>
 </div>
 

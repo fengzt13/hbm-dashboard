@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav class="navbar">
-  <div class="navbar-brand"><span class="icon">📊</span> HBM 景气度监控看板</div>
+  <div class="navbar-brand"><span class="icon">📊</span> 广州番禺有趣打工仔小冯的HBM监控看板</div>
   <div class="navbar-nav">
     <a href="index.html">景气度总览</a>
     <a href="price.html" class="active">价格监控</a>
@@ -20,7 +20,7 @@
     <a href="cloud.html">云厂商需求</a>
     <a href="landscape.html">竞争格局</a>
   </div>
-  <div class="navbar-meta">最后更新: 2026-08-31</div>
+  <div class="navbar-meta">数据截至: 2026Q2</div>
 </nav>
 
 <div class="container">
@@ -28,14 +28,14 @@
   <p class="page-subtitle">各代产品价格走势 · 合同价 · 季度环比/同比 · 涨幅对比 · 预测区间</p>
 
   <div class="metric-grid">
-    <div class="metric-card"><div class="label">HBM 当前均价</div><div class="value">$16.8<span class="unit">/GB</span></div><div class="change up">↑ 12.7% QoQ</div></div>
-    <div class="metric-card"><div class="label">2025年均价(美银)</div><div class="value">$14.3<span class="unit">/GB</span></div><div class="change neutral">美银预测</div></div>
-    <div class="metric-card"><div class="label">2027年均价(美银)</div><div class="value">$17.5<span class="unit">/GB</span></div><div class="change up">↑ +22% vs 2026</div></div>
-    <div class="metric-card"><div class="label">HBM占AI芯片成本</div><div class="value">63<span class="unit">%</span></div><div class="change up">↑ 52%→63% (2024Q1→2025Q4)</div></div>
+    <div class="metric-card"><div class="label">HBM 当前均价</div><div class="value">$16.8<span class="unit">/GB</span></div><div class="change up">↑ 12.7% QoQ · +44.8% YoY</div><div class="card-date">数据截至: 2026Q2</div></div>
+    <div class="metric-card"><div class="label">2025年均价(美银)</div><div class="value">$14.3<span class="unit">/GB</span></div><div class="change neutral">美银预测均价</div><div class="card-date">统计: 2025全年</div></div>
+    <div class="metric-card"><div class="label">2027年均价(美银)</div><div class="value">$17.5<span class="unit">/GB</span></div><div class="change up">↑ +22% vs 2026</div><div class="card-date">预测: 2027E</div></div>
+    <div class="metric-card"><div class="label">HBM占AI芯片成本</div><div class="value">68<span class="unit">%</span></div><div class="change up">↑ 52%→63%→68% (24Q1→25Q4→26Q2)</div><div class="card-date">数据截至: 2026Q2</div></div>
   </div>
 
   <div class="card">
-    <div class="card-title">HBM 均价走势 <span class="badge">$/GB · 2021Q1-2026Q2</span></div>
+    <div class="card-title">HBM 均价走势 <span class="badge">$/GB · 2021Q1-2026Q2</span> <span class="badge">数据截至 2026Q2</span></div>
     <div id="chart-price-trend" class="chart-container"></div>
   </div>
 
@@ -46,28 +46,29 @@
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">存储产品价格涨幅对比 <span class="badge">2025H2-2027E</span></div>
+      <div class="card-title">存储产品价格涨幅对比 <span class="badge">2025H2-2027E</span> <span class="badge">数据截至 2026Q2</span></div>
       <table>
-        <thead><tr><th>产品</th><th class="num">2025H2</th><th class="num">2026E</th><th class="num">2027E</th></tr></thead>
+        <thead><tr><th>产品</th><th class="num">2025H2</th><th class="num">2026E (YoY)</th><th class="num">2027E</th></tr></thead>
         <tbody>
-          <tr><td>服务器DRAM合约价</td><td class="num warn">+64%</td><td class="num warn">+270%(预估)</td><td>-</td></tr>
-          <tr><td>企业级SSD</td><td class="num warn">+35%</td><td class="num warn">+235%(预估)</td><td>-</td></tr>
-          <tr><td>HBM合约价</td><td class="num">持续上涨</td><td class="num warn">持续上涨</td><td class="num warn">+70%至140%</td></tr>
-          <tr><td>HBM单位容量价格</td><td class="num">+21%(2025全年)</td><td>-</td><td>-</td></tr>
-          <tr><td>HBM4 vs HBM3E溢价</td><td>-</td><td class="num warn">+30%</td><td>-</td></tr>
+          <tr><td>服务器DRAM合约价</td><td class="num warn">+64%</td><td class="num warn">+270% (预估)</td><td class="num">-</td></tr>
+          <tr><td>企业级SSD</td><td class="num warn">+35%</td><td class="num warn">+235% (预估)</td><td class="num">-</td></tr>
+          <tr><td>HBM合约价</td><td class="num">持续上涨</td><td class="num warn">+44.8% YoY</td><td class="num warn">+70%至140%</td></tr>
+          <tr><td>HBM单位容量价格</td><td class="num">+21% (2025全年)</td><td class="num warn">+18% (2026E)</td><td class="num">-</td></tr>
+          <tr><td>HBM4 vs HBM3E溢价</td><td class="num">-</td><td class="num warn">+30%</td><td class="num">-</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="card">
-      <div class="card-title">美银 HBM 价格预测</div>
+      <div class="card-title">美银 HBM 价格预测 <span class="badge">数据截至 2026Q2</span></div>
       <table>
-        <thead><tr><th class="num">年份</th><th class="num">均价($/GB)</th><th>备注</th></tr></thead>
+        <thead><tr><th class="num">年份</th><th class="num">均价($/GB)</th><th class="num">YoY</th><th>备注</th></tr></thead>
         <tbody>
-          <tr><td>2025</td><td class="num highlight">$14.3</td><td>美银预测均价</td></tr>
-          <tr><td>2026</td><td class="num highlight">$14.3</td><td>实际已超预期</td></tr>
-          <tr><td>2027</td><td class="num highlight">$17.5</td><td>HBM4/4E高端占比提升</td></tr>
-          <tr><td>2028</td><td class="num highlight">$17.5</td><td>结构涨价对冲产能增量</td></tr>
+          <tr><td class="num">2024</td><td class="num">$10.5</td><td class="num warn">+81% YoY</td><td>H100放量期</td></tr>
+          <tr><td class="num">2025</td><td class="num highlight">$14.3</td><td class="num warn">+36% YoY</td><td>美银预测均价</td></tr>
+          <tr><td class="num">2026</td><td class="num highlight">$16.8</td><td class="num warn">+17.5% YoY</td><td>实际已超预期</td></tr>
+          <tr><td class="num">2027</td><td class="num highlight">$17.5</td><td class="num warn">+4.2% YoY</td><td>HBM4/4E高端占比提升</td></tr>
+          <tr><td class="num">2028</td><td class="num highlight">$17.5</td><td class="num">0% YoY</td><td>结构涨价对冲产能增量</td></tr>
         </tbody>
       </table>
       <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:12px; color:var(--text-secondary);">
@@ -77,32 +78,19 @@
   </div>
 
   <div class="card">
-    <div class="card-title">HBM 在 AI 芯片成本中的权重变化</div>
-    <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
-      <div style="flex:1; min-width:300px;">
-        <div style="margin-bottom:12px;">
-          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:4px;">2024Q1: HBM占AI芯片组件支出</div>
-          <div class="progress-bar"><div class="fill" style="width:52%; background:var(--primary);"></div></div>
-          <div style="font-size:18px; font-weight:bold; margin-top:4px;">52%</div>
-        </div>
-        <div>
-          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:4px;">2025Q4: HBM占AI芯片组件支出</div>
-          <div class="progress-bar"><div class="fill" style="width:63%; background:var(--red);"></div></div>
-          <div style="font-size:18px; font-weight:bold; margin-top:4px; color:var(--red);">63%</div>
-        </div>
-      </div>
-      <div style="flex:1; min-width:300px; padding:16px; background:var(--primary-light); border-radius:8px; font-size:13px; color:var(--primary-dark);">
-        <b>Epoch AI 估算:</b><br/>
-        从2024Q1到2025Q4，英伟达、AMD、谷歌和亚马逊设计的AI芯片中，HBM内存占总组件支出的比例从52%升至63%。<br/><br/>
-        当一块AI加速卡上六成以上成本来自内存而非GPU本身，存储就不再只是配套，而是核心竞争力。
-      </div>
+    <div class="card-title">HBM 在 AI 芯片成本中的权重变化 <span class="badge">Epoch AI 估算</span> <span class="badge">数据截至 2026Q2</span></div>
+    <div id="chart-hbm-cost-share" class="chart-container" style="min-height:300px;"></div>
+    <div style="margin-top:12px; padding:16px; background:var(--primary-light); border-radius:8px; font-size:13px; color:var(--primary-dark);">
+      <b>Epoch AI 估算:</b><br/>
+      从2024Q1到2026Q2，英伟达、AMD、谷歌和亚马逊设计的AI芯片中，HBM内存占总组件支出的比例从52%升至约68%。<br/><br/>
+      当一块AI加速卡上六成以上成本来自内存而非GPU本身，存储就不再只是配套，而是核心竞争力。
     </div>
   </div>
 
 </div>
 
 <div class="footer">
-  <p>HBM 景气度监控看板 v1.0 | 数据来源: TrendForce / Omdia / 美银 / Epoch AI</p>
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.1 | 数据来源: TrendForce / Omdia / 美银 / Epoch AI</p>
   <div class="aigc-watermark">本文档由AI辅助生成</div>
 </div>
 
@@ -120,6 +108,58 @@ function renderGenTable() {
   });
   html += '</tbody></table>';
   document.getElementById('gen-table').innerHTML = html;
+}
+
+// 渲染 HBM 成本权重柱状图
+renderHBMCostShare();
+function renderHBMCostShare() {
+  const data = HBM_DATA.price.hbmCostShareTimeline;
+  const chart = echarts.init(document.getElementById('chart-hbm-cost-share'));
+  chart.setOption({
+    ...chartBaseOption,
+    legend: { show: false },
+    tooltip: {
+      trigger: 'axis',
+      formatter: function(params) {
+        let html = `<b>${params[0].axisValue}</b><br/>`;
+        params.forEach(p => {
+          html += `${p.marker} HBM占AI芯片组件支出: <b>${p.value}%</b><br/>`;
+        });
+        return html;
+      }
+    },
+    xAxis: {
+      type: 'category',
+      data: data.map(d => d.quarter),
+      axisLabel: { fontSize: 12 }
+    },
+    yAxis: {
+      type: 'value',
+      name: '占比(%)',
+      max: 80,
+      axisLabel: { formatter: '{value}%' }
+    },
+    series: [{
+      type: 'bar',
+      data: data.map(d => ({
+        value: d.share,
+        itemStyle: {
+          color: d.share >= 65 ? COLORS.red : (d.share >= 58 ? COLORS.orange : COLORS.primary),
+          borderRadius: [6, 6, 0, 0]
+        }
+      })),
+      barWidth: '40%',
+      label: {
+        show: true,
+        position: 'top',
+        formatter: '{c}%',
+        fontSize: 14,
+        fontWeight: 'bold'
+      }
+    }]
+  });
+  charts.push(chart);
+  window.addEventListener('resize', () => chart.resize());
 }
 </script>
 </body>

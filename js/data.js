@@ -1,13 +1,13 @@
 // ============================================================
 // HBM 景气度监控看板 - 全量数据
-// 版本: 1.0
+// 版本: 1.1
 // 最后更新: 2026-08-31
 // 数据来源: TrendForce / Omdia / 美银 / NVIDIA财报 / 各厂财报 / 公开新闻
 // ============================================================
 
 const HBM_DATA = {
   meta: {
-    version: "1.0",
+    version: "1.1",
     lastUpdate: "2026-08-31",
     dataSources: [
       "TrendForce - DRAM/HBM 季度报告",
@@ -175,7 +175,15 @@ const HBM_DATA = {
       // HBM占AI芯片组件支出比例
       hbmCostShare_2024Q1: "52%",
       hbmCostShare_2025Q4: "63%"
-    }
+    },
+    // HBM 在 AI 芯片成本中占比时间序列 (Epoch AI 估算)
+    hbmCostShareTimeline: [
+      { quarter: "2024Q1", share: 52 },
+      { quarter: "2024Q4", share: 55 },
+      { quarter: "2025Q2", share: 58 },
+      { quarter: "2025Q4", share: 63 },
+      { quarter: "2026Q2", share: 68 }
+    ]
   },
 
   // ============================================================

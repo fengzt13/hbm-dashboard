@@ -388,6 +388,66 @@ table th.num { text-align: right; }
   .container { padding: 16px; }
 }
 
+/* 数据时间标记 */
+.card-date {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  font-style: normal;
+}
+
+/* 首页总结区块 */
+.summary-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.summary-section .card-title {
+  margin-bottom: 16px;
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.summary-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--primary);
+}
+.summary-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.summary-card h4 .icon {
+  font-size: 16px;
+}
+.summary-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.summary-card p b {
+  color: var(--text);
+}
+.summary-card p .warn {
+  color: #e74c3c;
+  font-weight: 600;
+}
+.summary-card p .num-hl {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
 /* 数据缺口标注 */
 .data-missing {
   color: var(--text-tertiary);
