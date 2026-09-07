@@ -625,5 +625,264 @@ const HBM_DATA = {
     { date: "2026-03-19", title: "三星HBM4放量重夺DRAM市场第一,市占率36.6%", category: "竞争", impact: "中" },
     { date: "2026-02-25", title: "NVIDIA FY2026全年收入2159亿美元,数据中心收入1937亿", category: "需求", impact: "高" },
     { date: "2025-12-19", title: "2026年HBM市场关键:HBM4规模量产,DRAM占比约31%", category: "市场", impact: "高" }
-  ]
+  ],
+
+  // ============================================================
+  // 12. 看空观点与风险仪表盘
+  // 数据来源: 公开新闻 / 研报 / 社交媒体 / 财经媒体
+  // 整理时间: 2026-09-07
+  // ============================================================
+  bearishViews: {
+    meta: {
+      version: "1.0",
+      lastUpdate: "2026-09-07",
+      dataSources: [
+        "Ed Zitron - 'Let AI Burn' (2026.07)",
+        "高志凯 - AI泡沫分析 (2026.07)",
+        "Bill Dudley - 彭博观点 (2026.08.24)",
+        "Michael Hartnett - 美银首席策略师 (2026.01-08)",
+        "大摩(Morgan Stanley) - HBM供需报告 (2026.04)",
+        "德银(Deutsche Bank) - 存储通胀报告 (2026.06)",
+        "美银(BofA) - SK Hynix产能分析 (2026.07)",
+        "三星/SK Hynix 内部扩产策略报道 (2026.03-06)",
+        "36Kr/新浪财经/百家号 - SRAM/LPU技术路线分析 (2026.01-09)",
+        "大摩 - 中国存储重塑全球竞争格局 (2026.08.30)",
+        "高盛交易员预警 - 存储芯片下行风险 (2026.06)"
+      ],
+      disclaimer: "本页面所有观点均来自公开来源整理，仅供研究参考，不构成投资建议，不代表看板作者立场。"
+    },
+
+    // 五维风险评分 (0-100, 越高风险越大)
+    riskScores: {
+      demand: { score: 78, label: "需求端", color: "#e74c3c",
+        summary: "AI投资回报率严重不足，五大巨头投入5600亿但收入仅350亿，泡沫破裂窗口2026H2-2027H1" },
+      supply: { score: 62, label: "供给端", color: "#e67e22",
+        summary: "三星/SK Hynix主动放缓扩产，2028年DRAM短缺或趋于缓解，产能过剩拐点隐现" },
+      price: { score: 70, label: "价格端", color: "#f39c12",
+        summary: "存储涨价已传导至宏观通胀，美国电子PPI同比+26.9%，上游瓶颈向更上游转移" },
+      valuation: { score: 75, label: "估值/资本开支", color: "#9b59b6",
+        summary: "Shiller CAPE约41倍接近1999年泡沫，AI capex由债务支撑，资本效率或2027年恶化" },
+      tech: { score: 55, label: "技术替代", color: "#2980b9",
+        summary: "SRAM/LPU推理芯片+CXL内存池+光互连长期降低HBM依赖，中国存储2028年或动摇寡头格局" }
+    },
+
+    // 需求端看空观点
+    demand: [
+      {
+        person: "Ed Zitron",
+        role: "科技评论人 / Where's Your Ed At 博客作者",
+        date: "2026-07",
+        title: "AI泡沫本质是'OpenAI泡沫'，一旦失败将引发连锁崩盘",
+        view: "发布1.5万字长文《Let AI Burn》，称AI泡沫本质是'OpenAI泡沫'。OpenAI 2025年营收130.7亿美元但总成本远超营收，是'系统重要性机构'——一旦失败将如雷曼兄弟引发连锁崩盘。AI行业整体烧钱速度远超收入增长，投资者终将清醒。",
+        source: "Ed Zitron《Let AI Burn》原文",
+        sourceUrl: "https://www.wheresyoured.at/",
+        impact: "高"
+      },
+      {
+        person: "高志凯",
+        role: "宏观分析师",
+        date: "2026-07",
+        title: "AI泡沫破裂窗口2026H2-2027H1，破坏力是互联网泡沫的10倍",
+        view: "五大科技巨头AI累计投入5600亿美元但实际收入仅350亿美元，投入产出比16:1。AI泡沫破裂窗口在2026下半年至2027上半年，破坏力可能是2000年互联网泡沫的10倍。与互联网泡沫不同，AI泡沫由企业而非散户驱动，一旦企业削减开支将引发更大规模连锁反应。",
+        source: "公开新闻报道",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "Bill Dudley",
+        role: "前纽约联邦储备银行行长 / 前高盛合伙人",
+        date: "2026-08-24",
+        title: "AI投资热已达顶峰，泡沫或2027年底前破裂",
+        view: "AI投资热已达顶峰，当前增速无法持续——2027年建筑工人、发电、芯片制造能力不足以支撑同等规模增长。一旦增速放缓，投资者将重新评估AI投资回报，引发估值修正。CAPE约41倍接近历史极值。",
+        source: "彭博观点专栏",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "高盛交易员 Ippei Yamaura",
+        role: "高盛日本交易员",
+        date: "2026-06-29",
+        title: "科技股创纪录4标准差抛售，存储芯片板块面临结构性压力",
+        view: "科技股经历创纪录的4个标准差抛售，起因为韩国存储股率先下挫。OpenAI考虑将IPO推迟至2027年并下调1万亿美元估值目标，令市场信心受挫。存储芯片板块面临结构性压力而非短期波动。",
+        source: "高盛交易员报告",
+        sourceUrl: "https://zhuanlan.zhihu.com/p/2055012824984844013",
+        impact: "中"
+      }
+    ],
+
+    // 供给端看空观点
+    supply: [
+      {
+        person: "三星电子",
+        role: "全球最大存储芯片制造商",
+        date: "2026-03",
+        title: "内部预计DRAM短缺将于2028年前后趋于缓解，主动放缓扩产",
+        view: "三星内部预计DRAM短缺将于2028年前后趋于缓解，主动放缓扩产节奏避免过度扩张。在HBM4量产中采取稳健策略，不盲目追高产能，保留灵活性应对需求变化。",
+        source: "韩国媒体 THE ELEC / 行业报道",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "SK Hynix",
+        role: "全球第二大存储芯片制造商 / HBM市场份额第一",
+        date: "2026-06",
+        title: "放缓HBM4量产扩张，部分产能转向通用DRAM",
+        view: "放缓HBM4量产扩张节奏，将部分产能留给通用DRAM——因DRAM盈利能力反超HBM。表明HBM并非唯一高利润路径，存储厂商自身开始对HBM过度集中的产能配置进行再平衡。",
+        source: "行业报道",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "美银(BofA) Vivek Arya团队",
+        role: "美银半导体首席分析师",
+        date: "2026-07",
+        title: "SK Hynix 2028年实际新增产能或仅为原计划的1/6",
+        view: "SK Hynix 2028年实际新增产能可能仅为原计划的1/6，韩国'2030年产能翻倍'目标几近落空。产能扩张受制于资本、工艺、厂房和基础设施多重限制，扩产周期24-36个月意味着短期供给难以快速释放。",
+        source: "美银全球存储超级周期报告",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "韩国投资者",
+        role: "韩国本土机构投资者",
+        date: "2026-07",
+        title: "存储芯片过剩拐点似乎就在眼前，担忧企业举债推进AI基建",
+        view: "韩国投资者担忧存储芯片过剩拐点似乎就在眼前，对韩国企业举债大规模推进AI基建持谨慎态度。本土投资者对存储超级周期的持续性持更悲观态度，与海外分析师形成鲜明对比。",
+        source: "公开新闻报道",
+        sourceUrl: "",
+        impact: "中"
+      },
+      {
+        person: "大摩(Morgan Stanley)",
+        role: "全球投行",
+        date: "2026-08-30",
+        title: "2028年是中国存储重塑全球格局的关键拐点",
+        view: "2028年前AI红利和中国国内需求将缓冲冲击；2028年后中国厂商体量可能足以动摇寡头垄断的供应纪律，将全球存储行业推入更低利润率、更高资本强度、更激烈竞争的新常态。长鑫存储和长江存储正重新加入竞争。",
+        source: "大摩深度报告《中国存储如何重塑全球竞争格局》",
+        sourceUrl: "https://baijiahao.baidu.com/s?id=1874908657060689114",
+        impact: "高"
+      }
+    ],
+
+    // 价格端看空观点
+    price: [
+      {
+        person: "大摩(Morgan Stanley)",
+        role: "全球投行",
+        date: "2026-04",
+        title: "HBM供给充足率被压到2%，但2028年前后将出现前所未有的大规模资本开支",
+        view: "当前HBM供给充足率被压到2%（极度短缺），但2028年前后可能出现前所未有的大规模资本开支释放。瓶颈不会消失而是推向更上游——从HBM到先进封装，从先进封装到TSV设备，从设备到材料。",
+        source: "大摩HBM供需报告",
+        sourceUrl: "",
+        impact: "中"
+      },
+      {
+        person: "德银(Deutsche Bank)",
+        role: "全球投行",
+        date: "2026-06",
+        title: "存储涨价已传导至宏观通胀，美国电子PPI同比涨26.9%",
+        view: "存储涨价已从芯片行业问题演变为宏观经济变量。美国电子PPI同比涨26.9%，存储危机正从半导体行业向更广泛的经济领域传导。如果持续，将引发货币政策反应，间接抑制AI投资。",
+        source: "德银存储通胀报告",
+        sourceUrl: "",
+        impact: "高"
+      }
+    ],
+
+    // 估值与资本开支看空观点
+    valuation: [
+      {
+        person: "Bill Dudley",
+        role: "前纽约联邦储备银行行长 / 前高盛合伙人",
+        date: "2026-08-24",
+        title: "Shiller CAPE约41倍，仅略低于1999年互联网泡沫44倍",
+        view: "Shiller CAPE约41倍（长期均值17倍），仅略低于1999年互联网泡沫44倍。实际股权风险溢价约1.1%，不到2010年以来均值的一半。市场估值极度拉伸，一旦AI增长预期下修，估值修正幅度可能非常剧烈。",
+        source: "彭博观点专栏",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "Michael Hartnett",
+        role: "美银(BofA)首席投资策略师",
+        date: "2026-01 ~ 2026-08",
+        title: "AI capex狂潮由债务支撑，2026年将迎AI债券抛售潮",
+        view: "AI capex狂潮由债务而非盈利支撑，甲骨文CDS升至两年新高。一旦有科技巨头削减开支将引发'轮动海啸'。策略建议：做多经济繁荣、做空AI泡沫。2026年将迎来AI债券抛售潮，企业债利差扩大将率先发出预警。",
+        source: "美银Flow Show周报 / 多期报告",
+        sourceUrl: "",
+        impact: "高"
+      },
+      {
+        person: "券商研报对比分析",
+        role: "多家券商综合",
+        date: "2026-09",
+        title: "2026年类比1999年科网泡沫，Hyperscaler资本效率或2027年恶化",
+        view: "2026年类比1999年科网泡沫，Hyperscaler类比当年电信运营商。2027年Hyperscaler的资本使用效率/边际资本产出/EBITDA/Capex可能恶化，正如2000-2001年电信运营商在过度投资后资本回报急剧下降。历史上每一次'超级周期'最终都以产能过剩和价格崩盘收场。",
+        source: "多家券商研报综合",
+        sourceUrl: "",
+        impact: "中"
+      }
+    ],
+
+    // 技术替代看空观点
+    tech: [
+      {
+        person: "Groq / 英伟达",
+        role: "AI推理芯片公司 / 200亿美元被英伟达收购",
+        date: "2026-01 ~ 2026-03",
+        title: "LPU采用SRAM架构，推理场景可减少对HBM的依赖",
+        view: "英伟达以200亿美元收购Groq，其LPU(语言处理单元)采用大容量片上SRAM替代HBM架构，推理吞吐量/功耗比提升35倍。黄仁勋本人表示'如果一切都能装进SRAM，确实不需要HBM'。虽然SRAM硅片面积是DRAM的5-10倍，但在推理专用场景下，SRAM-first架构可显著降低HBM用量。AI从训练转向推理的趋势下，LPU可能蚕食部分GPU+HBM市场。",
+        source: "36Kr / 新浪财经 / 百家号 / GTC 2026报道",
+        sourceUrl: "https://36kr.com/p/3635766845293828",
+        impact: "中"
+      },
+      {
+        person: "三星 CXL 3.1 产品线",
+        role: "存储芯片厂商 / CXL联盟核心成员",
+        date: "2026-05",
+        title: "CXL内存池化技术实现内存解耦，降低对HBM的单一依赖",
+        view: "三星计划2026Q4量产基于CXL 3.1协议的CMM-D内存模块。CXL(Compute Express Link)允许GPU通过高速互连访问远端内存池，实现内存解耦和共享。在推理和边缘AI场景中，CXL内存池可作为HBM的补充方案，降低单芯片对HBM堆叠容量的刚性需求。CXL从'可选走向必选'，长期将改变AI计算的内存架构。",
+        source: "百家号 / CSDN / 澎湃新闻",
+        sourceUrl: "https://baijiahao.baidu.com/s?id=1865595261160762774",
+        impact: "中"
+      },
+      {
+        person: "CPO(共封装光学)技术",
+        role: "光互连技术路线",
+        date: "2026-03",
+        title: "光互连替代铜互连，长期可改变芯片间数据传输架构",
+        view: "CPO(Co-Packaged Optics)将光收发器与交换芯片共封装，大幅提升带宽密度和能效。小摩报告指出中短期内CPO采用预期可能过高，但长期来看光互连将改变数据中心架构，可能减少对高密度HBM堆叠的依赖。英伟达Vera Rubin平台已在推进CPO方向。",
+        source: "小摩GTC 2026前瞻报告",
+        sourceUrl: "",
+        impact: "低"
+      },
+      {
+        person: "中国存储厂商(长鑫/长存)",
+        role: "国产存储芯片厂商",
+        date: "2026-08-30",
+        title: "2028年后中国厂商体量或足以动摇寡头垄断供应纪律",
+        view: "大摩报告指出，中国存储厂商正将国家支持和国内需求转化为制造规模。2028年将是关键拐点——此后中国厂商体量可能足以动摇现有寡头垄断的供应纪律，将全球存储行业推入更低利润率、更高资本强度、更激烈竞争的新常态。长鑫存储和长江存储正重新加入竞争，竞争重心从'制造最快的DRAM'转向'建设足够产能'。",
+        source: "大摩《中国存储如何重塑全球竞争格局》",
+        sourceUrl: "https://baijiahao.baidu.com/s?id=1874908657060689114",
+        impact: "中"
+      }
+    ],
+
+    // 时间轴 (所有观点按时间倒序)
+    timeline: [
+      { date: "2026-09", person: "券商研报对比", dimension: "估值", title: "2026年类比1999年科网泡沫，Hyperscaler资本效率或2027年恶化" },
+      { date: "2026-08-30", person: "大摩", dimension: "供给", title: "2028年是中国存储重塑全球格局的关键拐点" },
+      { date: "2026-08-24", person: "Bill Dudley", dimension: "需求+估值", title: "AI投资热已达顶峰，泡沫或2027年底前破裂；CAPE约41倍接近1999年" },
+      { date: "2026-07", person: "Ed Zitron", dimension: "需求", title: "AI泡沫本质是'OpenAI泡沫'，一旦失败将如雷曼兄弟引发连锁崩盘" },
+      { date: "2026-07", person: "高志凯", dimension: "需求", title: "AI泡沫破裂窗口2026H2-2027H1，破坏力是互联网泡沫的10倍" },
+      { date: "2026-07", person: "美银(BofA)", dimension: "供给", title: "SK Hynix 2028年实际新增产能或仅为原计划的1/6" },
+      { date: "2026-07", person: "韩国投资者", dimension: "供给", title: "存储芯片过剩拐点似乎就在眼前，担忧举债推进AI基建" },
+      { date: "2026-06-29", person: "高盛交易员", dimension: "需求", title: "科技股创纪录4标准差抛售，存储芯片板块面临结构性压力" },
+      { date: "2026-06", person: "SK Hynix", dimension: "供给", title: "放缓HBM4量产扩张，部分产能转向通用DRAM" },
+      { date: "2026-06", person: "德银", dimension: "价格", title: "存储涨价已传导至宏观通胀，美国电子PPI同比涨26.9%" },
+      { date: "2026-05", person: "三星 CXL", dimension: "技术", title: "CXL 3.1内存池化技术量产，降低对HBM单一依赖" },
+      { date: "2026-04", person: "大摩", dimension: "价格", title: "HBM供给充足率仅2%，但2028年将出现大规模资本开支释放" },
+      { date: "2026-03", person: "三星", dimension: "供给", title: "内部预计DRAM短缺2028年趋于缓解，主动放缓扩产" },
+      { date: "2026-03", person: "Groq/英伟达", dimension: "技术", title: "LPU采用SRAM架构，推理场景可减少对HBM的依赖" },
+      { date: "2026-01 ~ 2026-08", person: "Michael Hartnett", dimension: "估值", title: "AI capex狂潮由债务支撑，2026年将迎AI债券抛售潮" }
+    ]
+  }
 };

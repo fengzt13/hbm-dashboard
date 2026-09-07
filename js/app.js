@@ -637,6 +637,9 @@ function initCharts() {
 
   // 渲染核心指标卡片
   renderMetricCards();
+
+  // 渲染看空观点页面
+  initRiskPage();
 }
 
 function renderMetricCards() {
@@ -682,3 +685,186 @@ window.addEventListener('resize', () => {
 
 // DOM加载完成
 document.addEventListener('DOMContentLoaded', initCharts);
+
+// ============================================================
+// 看空观点页面渲染
+// ============================================================
+
+function initRiskPage() {
+  if (!document.getElementById('chart-risk-radar')) return;
+
+  renderRiskRadar();
+  renderRiskScoresTable();
+  renderRiskViews('risk-demand', HBM_DATA.bearishViews.demand, 'demand');
+  renderRiskViews('risk-supply', HBM_DATA.bearishViews.supply, 'supply');
+  renderRiskViews('risk-price', HBM_DATA.bearishViews.price, 'price');
+  renderRiskViews('risk-valuation', HBM_DATA.bearishViews.valuation, 'valuation');
+  renderRiskViews('risk-tech', HBM_DATA.bearishViews.tech, 'tech');
+  renderRiskTimeline();
+}
+
+function renderRiskRadar() {
+  const dom = document.getElementById('chart-risk-radar');
+  if (!dom) return;
+  const chart = echarts.init(dom);
+  const rs = HBM_DATA.bearishViews.riskScores;
+
+  chart.setOption({
+    tooltip: {
+      trigger: 'item',
+      formatter: function(params) {
+        const indicators = ['需求端', '供给端', '价格端', '估值/资本开支', '技术替代'];
+        let html = '<b>五维风险评分</b><br/>';
+        params.value.forEach((v, i) => {
+          html += indicators[i] + ': <b>' + v + '</b>/100<br/>';
+        });
+        return html;
+      }
+    },
+    radar: {
+      indicator: [
+        { name: '需求端', max: 100 },
+        { name: '供给端', max: 100 },
+        { name: '价格端', max: 100 },
+        { name: '估值/资本开支', max: 100 },
+        { name: '技术替代', max: 100 }
+      ],
+      shape: 'polygon',
+      radius: '65%',
+      center: ['50%', '55%'],
+      splitNumber: 5,
+      axisName: {
+        color: '#5a6c7d',
+        fontSize: 13,
+        fontWeight: 600
+      },
+      splitLine: {
+        lineStyle: { color: '#E8EDF1' }
+      },
+      splitArea: {
+        areaStyle: {
+          color: ['#FAFBFC', '#fff', '#FAFBFC', '#fff', '#FAFBFC']
+        }
+      },
+      axisLine: {
+        lineStyle: { color: '#E8EDF1' }
+      }
+    },
+    series: [{
+      type: 'radar',
+      data: [{
+        value: [rs.demand.score, rs.supply.score, rs.price.score, rs.valuation.score, rs.tech.score],
+        name: '风险评分',
+        symbol: 'circle',
+        symbolSize: 8,
+        lineStyle: {
+          color: '#e74c3c',
+          width: 2
+        },
+        itemStyle: {
+          color: '#e74c3c'
+        },
+        areaStyle: {
+          color: 'rgba(231, 76, 60, 0.15)'
+        },
+        label: {
+          show: true,
+          formatter: function(params) {
+            return params.value;
+          },
+          color: '#c0392b',
+          fontSize: 12,
+          fontWeight: 600
+        }
+      }]
+    }]
+  });
+  charts.push(chart);
+}
+
+function renderRiskScoresTable() {
+  const dom = document.getElementById('risk-scores-table');
+  if (!dom) return;
+  const rs = HBM_DATA.bearishViews.riskScores;
+  const dimensions = ['demand', 'supply', 'price', 'valuation', 'tech'];
+  let html = '<table style="table-layout:fixed;">';
+  html += '<thead><tr><th style="width:20%;">维度</th><th style="width:10%;" class="num">评分</th><th>核心逻辑</th></tr></thead>';
+  html += '<tbody>';
+  dimensions.forEach(function(key) {
+    var d = rs[key];
+    var level = d.score >= 75 ? 'tag-red' : (d.score >= 60 ? 'tag-orange' : 'tag-yellow');
+    html += '<tr>';
+    html += '<td><span class="tag ' + level + '">' + d.label + '</span></td>';
+    html += '<td class="num"><b style="font-size:18px; color:' + d.color + ';">' + d.score + '</b><span style="color:#8899aa; font-size:12px;">/100</span></td>';
+    html += '<td style="font-size:13px; color:var(--text-secondary);">' + d.summary + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  dom.innerHTML = html;
+}
+
+function renderRiskViews(domId, views, dimension) {
+  var dom = document.getElementById(domId);
+  if (!dom) return;
+
+  var dimColors = {
+    demand: '#e74c3c',
+    supply: '#e67e22',
+    price: '#f39c12',
+    valuation: '#9b59b6',
+    tech: '#2980b9'
+  };
+  var color = dimColors[dimension] || '#2196F3';
+
+  var html = '';
+  views.forEach(function(v, i) {
+    var impactColor = v.impact === '高' ? '#e74c3c' : (v.impact === '中' ? '#e67e22' : '#8899aa');
+    html += '<div style="border-left: 3px solid ' + color + '; padding: 14px 18px; margin-bottom: 16px; background: #FAFBFC; border-radius: 0 6px 6px 0;">';
+    html += '<div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:8px;">';
+    html += '<div>';
+    html += '<span style="font-size:15px; font-weight:700; color:var(--text);">' + v.person + '</span>';
+    html += ' <span style="font-size:12px; color:var(--text-tertiary); margin-left:6px;">' + v.role + '</span>';
+    html += '</div>';
+    html += '<div style="display:flex; align-items:center; gap:8px;">';
+    html += '<span style="font-size:12px; color:var(--text-tertiary);">' + v.date + '</span>';
+    html += '<span class="tag" style="background:' + (v.impact === '高' ? '#fde8e8' : v.impact === '中' ? '#fef0e0' : '#f5f5f5') + '; color:' + impactColor + ';">影响' + v.impact + '</span>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div style="font-size:14px; font-weight:600; color:var(--primary-dark); margin-bottom:6px;">' + v.title + '</div>';
+    html += '<div style="font-size:13px; color:var(--text-secondary); line-height:1.7; margin-bottom:8px;">' + v.view + '</div>';
+    html += '<div style="font-size:12px; color:var(--text-tertiary);">';
+    html += '<b>来源：</b>' + v.source;
+    if (v.sourceUrl) {
+      html += ' <a href="' + v.sourceUrl + '" target="_blank" style="color:var(--primary); text-decoration:none;">[链接]</a>';
+    }
+    html += '</div>';
+    html += '</div>';
+  });
+  dom.innerHTML = html;
+}
+
+function renderRiskTimeline() {
+  var dom = document.getElementById('risk-timeline');
+  if (!dom) return;
+  var timeline = HBM_DATA.bearishViews.timeline;
+  var dimColors = {
+    '需求': '#e74c3c',
+    '供给': '#e67e22',
+    '价格': '#f39c12',
+    '估值': '#9b59b6',
+    '技术': '#2980b9',
+    '需求+估值': '#e74c3c'
+  };
+
+  var html = '<div class="timeline">';
+  timeline.forEach(function(item) {
+    var color = dimColors[item.dimension] || '#2196F3';
+    html += '<div class="timeline-item" style="border-left-color:' + color + ';">';
+    html += '<div class="timeline-date">' + item.date + '</div>';
+    html += '<div class="timeline-title">' + item.title + '</div>';
+    html += '<div class="timeline-category">' + item.person + ' · ' + item.dimension + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  dom.innerHTML = html;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>看空观点 - HBM 景气度监控看板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+  <div class="navbar-brand"><span class="icon">📊</span> 广州番禺有趣打工仔小冯的HBM监控看板</div>
+  <div class="navbar-nav">
+    <a href="index.html">景气度总览</a>
+    <a href="price.html">价格监控</a>
+    <a href="capacity.html">产能监控</a>
+    <a href="inventory.html">库存监控</a>
+    <a href="demand.html">需求监控</a>
+    <a href="expansion.html">扩产情况</a>
+    <a href="cloud.html">云厂商需求</a>
+    <a href="landscape.html">竞争格局</a>
+    <a href="risk.html" class="active">看空观点</a>
+  </div>
+  <div class="navbar-meta">数据截至: 2026-09 | 月度更新</div>
+</nav>
+
+<div class="container">
+
+  <!-- 标题 -->
+  <h1 class="page-title">看空观点与风险仪表盘</h1>
+  <p class="page-subtitle">知名机构与人物对 HBM / AI 存储超级周期的看空逻辑 · 按产业链五大维度分类</p>
+
+  <!-- 风险雷达图 + 维度评分 -->
+  <div class="prosperity-section">
+    <div class="gauge-card">
+      <div class="gauge-title">五维风险雷达图</div>
+      <div id="chart-risk-radar" class="chart-container"></div>
+    </div>
+    <div class="gauge-card">
+      <div class="gauge-title">各维度风险评分与核心逻辑</div>
+      <div id="risk-scores-table"></div>
+    </div>
+  </div>
+
+  <!-- 免责声明 -->
+  <div class="card" style="border-left: 4px solid #e74c3c;">
+    <div class="card-title"><span class="icon">⚠️</span> 说明</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.8;">
+      本页面收集整理了知名机构与人物对 HBM 及 AI 存储超级周期的<b>看空观点</b>，按产业链五大维度（需求端 / 供给端 / 价格端 / 估值与资本开支 / 技术替代）分类展示。
+      所有观点均标注来源、时间和人物/机构背景，仅供研究参考，<b>不构成投资建议</b>，也不代表看板作者立场。
+      看空观点存在时效性，部分预测可能已被市场证伪或验证。
+    </p>
+  </div>
+
+  <!-- 需求端风险 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📉</span> 需求端风险 <span class="badge">AI投资回报率不足 · 泡沫破裂</span></div>
+    <div id="risk-demand"></div>
+  </div>
+
+  <!-- 供给端风险 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🏭</span> 供给端风险 <span class="badge">扩产滞后 · 产能过剩拐点</span></div>
+    <div id="risk-supply"></div>
+  </div>
+
+  <!-- 价格端风险 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">💰</span> 价格端风险 <span class="badge">涨价传导通胀 · 上游瓶颈转移</span></div>
+    <div id="risk-price"></div>
+  </div>
+
+  <!-- 估值与资本开支风险 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📊</span> 估值与资本开支风险 <span class="badge">CAPE泡沫 · 债务驱动 · 资本效率恶化</span></div>
+    <div id="risk-valuation"></div>
+  </div>
+
+  <!-- 技术替代风险 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🔬</span> 技术替代风险 <span class="badge">SRAM/LPU · CXL · 光互连 · 国产替代</span></div>
+    <div id="risk-tech"></div>
+  </div>
+
+  <!-- 时间轴 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📅</span> 看空观点时间轴 <span class="badge">2026.01 - 2026.09</span></div>
+    <div id="risk-timeline"></div>
+  </div>
+
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.2 | 看空观点数据来源: 公开新闻 / 研报 / 社交媒体</p>
+  <p style="margin-top:4px;">所有观点均标注来源，仅供研究参考，不构成投资建议</p>
+  <div class="aigc-watermark">本文档由AI辅助生成</div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
