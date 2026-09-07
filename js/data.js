@@ -7,8 +7,8 @@
 
 const HBM_DATA = {
   meta: {
-    version: "1.1",
-    lastUpdate: "2026-08-31",
+    version: "1.3",
+    lastUpdate: "2026-09-07",
     dataSources: [
       "TrendForce - DRAM/HBM 季度报告",
       "Omdia - 半导体市场季度追踪",
@@ -43,7 +43,8 @@ const HBM_DATA = {
         { quarter: "2025Q3", score: 86, label: "极高景气", supplyGap: 12.5, priceMoM: 15, inventoryDays: 32, utilization: 97 },
         { quarter: "2025Q4", score: 89, label: "极高景气", supplyGap: 14.8, priceMoM: 20, inventoryDays: 28, utilization: 98 },
         { quarter: "2026Q1", score: 91, label: "极高景气", supplyGap: 16.5, priceMoM: 25, inventoryDays: 25, utilization: 98 },
-        { quarter: "2026Q2", score: 92, label: "极高景气", supplyGap: 18.2, priceMoM: 28, inventoryDays: 22, utilization: 99 }
+        { quarter: "2026Q2", score: 92, label: "极高景气", supplyGap: 18.2, priceMoM: 28, inventoryDays: 22, utilization: 99 },
+        { quarter: "2026Q3*", score: 94, label: "极高景气", supplyGap: 20.0, priceMoM: 30, inventoryDays: 20, utilization: 99, forecast: true }
       ],
       weights: {
         supplyGap: 0.40,
@@ -52,12 +53,12 @@ const HBM_DATA = {
         utilization: 0.15
       },
       latest: {
-        score: 92,
+        score: 94,
         label: "极高景气",
         color: "#e74c3c",
-        supplyGap: 18.2,
-        priceMoM: 28,
-        inventoryDays: 22,
+        supplyGap: 20.0,
+        priceMoM: 30,
+        inventoryDays: 20,
         utilization: 99
       }
     },
@@ -79,10 +80,10 @@ const HBM_DATA = {
         { quarter: "2026Q1", score: 92 },
         { quarter: "2026Q2", score: 93 },
         // 预测值
-        { quarter: "2026Q3*", score: 94, forecast: true },
-        { quarter: "2026Q4*", score: 93, forecast: true },
-        { quarter: "2027Q1*", score: 91, forecast: true },
-        { quarter: "2027Q2*", score: 88, forecast: true }
+        { quarter: "2026Q3*", score: 95, forecast: true },
+        { quarter: "2026Q4*", score: 94, forecast: true },
+        { quarter: "2027Q1*", score: 92, forecast: true },
+        { quarter: "2027Q2*", score: 89, forecast: true }
       ],
       weights: {
         cloudCapex: 0.30,
@@ -92,7 +93,7 @@ const HBM_DATA = {
         inventoryLevel: 0.10
       },
       latest: {
-        score: 93,
+        score: 95,
         label: "持续上行",
         trend: "up",
         // 预期 vs 当前 剪刀差
@@ -138,7 +139,8 @@ const HBM_DATA = {
       { quarter: "2025Q3", price: 13.8, hbmGen: "HBM3E/HBM4" },
       { quarter: "2025Q4", price: 14.3, hbmGen: "HBM4" },
       { quarter: "2026Q1", price: 15.5, hbmGen: "HBM4" },
-      { quarter: "2026Q2", price: 16.8, hbmGen: "HBM4" }
+      { quarter: "2026Q2", price: 16.8, hbmGen: "HBM4" },
+      { quarter: "2026Q3*", price: 18.2, hbmGen: "HBM4", forecast: true, note: "大摩预测:Q3 DDR4涨50%,HBM继续上行" }
     ],
     // 美银预测均价
     forecast: [
@@ -182,7 +184,8 @@ const HBM_DATA = {
       { quarter: "2024Q4", share: 55 },
       { quarter: "2025Q2", share: 58 },
       { quarter: "2025Q4", share: 63 },
-      { quarter: "2026Q2", share: 68 }
+      { quarter: "2026Q2", share: 68 },
+      { quarter: "2026Q3*", share: 70, forecast: true, note: "预估: HBM4持续涨价推动" }
     ]
   },
 
@@ -206,7 +209,8 @@ const HBM_DATA = {
       { quarter: "2025Q3", skHynix: 300, samsung: 260, micron: 80 },
       { quarter: "2025Q4", skHynix: 320, samsung: 280, micron: 85 },
       { quarter: "2026Q1", skHynix: 350, samsung: 300, micron: 90 },
-      { quarter: "2026Q2", skHynix: 380, samsung: 320, micron: 95 }
+      { quarter: "2026Q2", skHynix: 380, samsung: 320, micron: 95 },
+      { quarter: "2026Q3*", skHynix: 410, samsung: 345, micron: 100, forecast: true, note: "美光计划年底前月产能提升至10万片" }
     ],
     // HBM占DRAM产能比重 (按位元)
     hbmShareOfDRAM: [
@@ -232,7 +236,8 @@ const HBM_DATA = {
       { quarter: "2025Q3", skHynix: 98, samsung: 96, micron: 95 },
       { quarter: "2025Q4", skHynix: 98, samsung: 97, micron: 96 },
       { quarter: "2026Q1", skHynix: 99, samsung: 97, micron: 97 },
-      { quarter: "2026Q2", skHynix: 99, samsung: 98, micron: 98 }
+      { quarter: "2026Q2", skHynix: 99, samsung: 98, micron: 98 },
+      { quarter: "2026Q3*", skHynix: 99, samsung: 98, micron: 98, forecast: true }
     ],
     // HBM+服务器RDIMM占DRAM位元供应量
     hbmServerShare: {
@@ -287,7 +292,8 @@ const HBM_DATA = {
       { quarter: "2025Q3", skHynix: 32, samsung: 38, micron: 40 },
       { quarter: "2025Q4", skHynix: 28, samsung: 32, micron: 35 },
       { quarter: "2026Q1", skHynix: 25, samsung: 28, micron: 30 },
-      { quarter: "2026Q2", skHynix: 22, samsung: 25, micron: 27 }
+      { quarter: "2026Q2", skHynix: 22, samsung: 25, micron: 27 },
+      { quarter: "2026Q3*", skHynix: 20, samsung: 23, micron: 25, forecast: true, note: "预估: 库存继续去化" }
     ],
     // 客户端库存可用周数 (估算)
     clientWeeks: [
@@ -304,7 +310,8 @@ const HBM_DATA = {
       { quarter: "2025Q3", nvidia: 3, amd: 4, cloud: 2 },
       { quarter: "2025Q4", nvidia: 2, amd: 4, cloud: 2 },
       { quarter: "2026Q1", nvidia: 2, amd: 3, cloud: 1 },
-      { quarter: "2026Q2", nvidia: 2, amd: 3, cloud: 1 }
+      { quarter: "2026Q2", nvidia: 2, amd: 3, cloud: 1 },
+      { quarter: "2026Q3*", nvidia: 2, amd: 2, cloud: 1, forecast: true }
     ],
     // 库存预警阈值
     alertThresholds: {
@@ -339,8 +346,12 @@ const HBM_DATA = {
       { quarter: "FY26Q2", calQuarter: "2025Q2", totalRevenue: 46743, dataCenter: 41185 },
       { quarter: "FY26Q3", calQuarter: "2025Q3", totalRevenue: 57006, dataCenter: 51200 },
       { quarter: "FY26Q4", calQuarter: "2025Q4", totalRevenue: 68127, dataCenter: 62300 },
-      // FY2027 Q1 指引
-      { quarter: "FY27Q1*", calQuarter: "2026Q1*", totalRevenue: 78000, dataCenter: 72000, forecast: true }
+      // FY2027 Q1 实际值 (截至2026.4.26)
+      { quarter: "FY27Q1", calQuarter: "2026Q1", totalRevenue: 81615, dataCenter: 75200, note: "FY27Q1实际: +85% YoY, 净利润583亿" },
+      // FY2027 Q2 实际值 (截至2026.7.26)
+      { quarter: "FY27Q2", calQuarter: "2026Q2", totalRevenue: 96221, dataCenter: 89000, note: "FY27Q2实际: +106% YoY, 毛利率75%, Vera Rubin量产" },
+      // FY2027 Q3 指引
+      { quarter: "FY27Q3*", calQuarter: "2026Q3*", totalRevenue: 108000, dataCenter: 100000, forecast: true, note: "公司指引1080亿(±2%)" }
     ],
     // GPU HBM 用量规格
     gpuSpecs: [
@@ -424,7 +435,12 @@ const HBM_DATA = {
       { date: "2026.07", event: "美银发布HBM预测:2026年269亿美元,2030年836亿美元", impact: "长期空间确认" },
       { date: "2026.08", event: "TrendForce:存储占云厂商资本支出2027年将达68%", impact: "成本结构变化" },
       { date: "2026.08", event: "SK Hynix与英伟达等签7500亿美元长期供应协议", impact: "产能锁定" },
-      { date: "2026.08", event: "三星与博通签2000亿美元合作备忘录", impact: "产能锁定" }
+      { date: "2026.08", event: "三星与博通签2000亿美元合作备忘录", impact: "产能锁定" },
+      { date: "2026.08", event: "英伟达FY27Q2营收962亿(+106% YoY),数据中心890亿,Vera Rubin量产", impact: "需求端验证" },
+      { date: "2026.08", event: "Gartner上修2026年全球存储营收至8373亿,占半导体54%", impact: "市场空间上修" },
+      { date: "2026.08", event: "大摩:Q3 DDR4涨50%,SLC NAND每季涨超50%", impact: "全品类涨价" },
+      { date: "2026.09", event: "美光计划年底前HBM月产能提升至10万片", impact: "供给端扩张" },
+      { date: "2026.09", event: "Rubin Ultra HBM从768GB降至192GB(8-Hi),三星配合开发8层HBM", impact: "产品调整" }
     ],
     // 长期供应协议
     longTermDeals: [
@@ -458,7 +474,8 @@ const HBM_DATA = {
       { quarter: "2025Q4", aws: 38.0, microsoft: 35.0, google: 28.0, meta: 20.0 },
       // 2026
       { quarter: "2026Q1", aws: 45.0, microsoft: 38.0, google: 35.0, meta: 25.0 },
-      { quarter: "2026Q2", aws: 54.2, microsoft: 41.0, google: 44.9, meta: 31.1, note: "合计1712亿美元,同比大幅增长" }
+      { quarter: "2026Q2", aws: 54.2, microsoft: 41.0, google: 44.9, meta: 31.1, note: "合计1712亿美元,同比大幅增长" },
+      { quarter: "2026Q3*", aws: 62.0, microsoft: 48.0, google: 52.0, meta: 36.0, forecast: true, note: "预估: Vera Rubin量产推动,五大巨头全年约8300亿" }
     ],
     // 2026全年CAPEX指引
     capexGuidance2026: [
@@ -597,7 +614,8 @@ const HBM_DATA = {
       { quarter: "2025Q3", supply: 7.8, demand: 8.78, gap: 12.5 },
       { quarter: "2025Q4", supply: 8.5, demand: 9.76, gap: 14.8 },
       { quarter: "2026Q1", supply: 9.2, demand: 10.72, gap: 16.5 },
-      { quarter: "2026Q2", supply: 10.0, demand: 11.82, gap: 18.2, note: "缺口持续扩大" }
+      { quarter: "2026Q2", supply: 10.0, demand: 11.82, gap: 18.2, note: "缺口持续扩大" },
+      { quarter: "2026Q3*", supply: 11.0, demand: 13.20, gap: 20.0, forecast: true, note: "预估: Vera Rubin量产推动需求" }
     ],
     // 年度供需平衡
     yearly: [
@@ -615,11 +633,16 @@ const HBM_DATA = {
   // 11. 最新动态时间轴
   // ============================================================
   latestNews: [
+    { date: "2026-09-05", title: "美光计划年底前将HBM月产能提升至10万片,三星/SK海力士各保持15-20万片", category: "扩产", impact: "高" },
+    { date: "2026-09-03", title: "SemiAnalysis:Rubin Ultra HBM从768GB降至192GB(8-Hi),三星配合开发8层HBM", category: "技术", impact: "中" },
+    { date: "2026-08-31", title: "Gartner上修2026年全球存储营收至8373亿美元,占半导体市场54%", category: "市场", impact: "高" },
     { date: "2026-08-30", title: "存储价格超越一颗顶级SoC！Gartner上修2026年营收至8373亿美元", category: "市场", impact: "高" },
+    { date: "2026-08-27", title: "英伟达FY27Q2:营收962亿(+106% YoY),数据中心890亿(+117%),Vera Rubin量产", category: "需求", impact: "高" },
     { date: "2026-08-26", title: "TrendForce:存储占云厂商资本支出2027年将达68%", category: "价格", impact: "高" },
     { date: "2026-08-25", title: "全球科技企业竞逐存储芯片:三大厂2026合计投入近1200亿美元", category: "扩产", impact: "高" },
     { date: "2026-08-22", title: "英伟达宣布2027年起AI服务器涨价超15%,因HBM成本飙升", category: "价格", impact: "高" },
     { date: "2026-08-20", title: "Google发布TPU v7 Ironwood:192GB HBM3E,峰值算力较v5p提升10倍", category: "需求", impact: "中" },
+    { date: "2026-08-19", title: "大摩:Q3 DDR4涨50%、Q4再涨10%,SLC NAND每季涨超50%,HBM挤压消费级产能", category: "价格", impact: "高" },
     { date: "2026-07-06", title: "美银发布HBM完整预测:2026年269亿美元,2030年836亿美元", category: "市场", impact: "高" },
     { date: "2026-06-03", title: "SK Hynix宣布五年产能翻倍计划,存储超级周期持续", category: "扩产", impact: "高" },
     { date: "2026-03-19", title: "三星HBM4放量重夺DRAM市场第一,市占率36.6%", category: "竞争", impact: "中" },
