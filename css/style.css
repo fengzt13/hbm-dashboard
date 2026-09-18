@@ -33,7 +33,7 @@ body {
   background: #fff;
   border-bottom: 1px solid var(--border);
   padding: 0 32px;
-  height: 56px;
+  min-height: 56px;
   display: flex;
   align-items: center;
   position: sticky;
@@ -43,10 +43,10 @@ body {
 }
 
 .navbar-brand {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--primary-dark);
-  margin-right: 40px;
+  margin-right: 24px;
   white-space: nowrap;
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 .navbar-nav a {
-  padding: 8px 14px;
+  padding: 6px 10px;
   color: var(--text-secondary);
   text-decoration: none;
   border-radius: 6px;
@@ -90,14 +90,30 @@ body {
   align-items: center;
   gap: 6px;
 }
-.cross-links { display: flex; align-items: center; gap: 4px; }
-.cross-links-label { font-size: 12px; color: var(--text-tertiary); margin-right: 2px; white-space: nowrap; }
+/* 跨站链接（导航栏下方独立一行） */
+.cross-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 32px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.cross-links-label { font-size: 11px; color: var(--text-tertiary); margin-right: 2px; white-space: nowrap; }
 .cross-link {
-  color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500;
-  padding: 4px 10px; border-radius: 9999px; border: 1px solid var(--border);
+  color: var(--text-secondary); text-decoration: none; font-size: 11px; font-weight: 400;
+  padding: 2px 8px; border-radius: 9999px; border: 1px solid var(--border);
   transition: color .2s, background .2s, border-color .2s; white-space: nowrap;
 }
 .cross-link:hover { color: var(--primary); background: var(--primary-light); border-color: var(--primary); }
+.cross-bar-meta {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+.navbar-meta:empty { display: none; }
 
 /* 主容器 */
 .container {
@@ -396,6 +412,7 @@ table th.num { text-align: right; }
 @media (max-width: 640px) {
   .metric-grid { grid-template-columns: 1fr; }
   .navbar { padding: 0 16px; }
+  .cross-bar { padding: 6px 16px 8px; }
   .container { padding: 16px; }
 }
 
