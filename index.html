@@ -33,18 +33,30 @@
   <h1 class="page-title">广州番禺有趣打工仔小冯的HBM监控看板</h1>
   <p class="page-subtitle">高带宽存储器全产业链供需态势 · 价格 · 产能 · 库存 · 需求 · 扩产 · 云厂商采购</p>
 
+  <!-- 数据更新说明条 -->
+  <div class="data-freshness-bar">
+    <div class="fresh-title">📌 数据更新说明</div>
+    <div style="margin-bottom:2px;">数据更新操作时间：<b>2026年9月21日</b></div>
+    <div>
+      <span class="fresh-item">存储价格(DRAM/NAND/HBM)：<b>截至 2026-08-31</b></span>
+      <span class="fresh-item">NVIDIA财报：<b>截至 2026-08-26</b>（FY27Q2实际值）</span>
+      <span class="fresh-item">DRAM市占率：<b>截至 2026Q2</b>（TrendForce报告）</span>
+      <span class="fresh-item">景气度/产能/库存/供需：<b>截至 2026Q3*</b>（预估）</span>
+    </div>
+  </div>
+
   <!-- 核心指标卡片 -->
   <div class="metric-grid">
     <div class="metric-card">
       <div class="label">HBM 均价</div>
       <div class="value" id="metric-price">$18.2</div>
-      <div class="change up">↑ 8.3% QoQ · +52.1% YoY</div>
+      <div class="change up">↑ 8.3% QoQ · +31.9% YoY</div>
       <div class="card-date">数据截至: 2026Q3*</div>
     </div>
     <div class="metric-card">
       <div class="label">全球月产能</div>
       <div class="value" id="metric-capacity">855 <span class="unit">千片/月</span></div>
-      <div class="change up">↑ 7.5% QoQ · +60.3% YoY</div>
+      <div class="change up">↑ 7.5% QoQ · +33.6% YoY</div>
       <div class="card-date">数据截至: 2026Q3*</div>
     </div>
     <div class="metric-card">
@@ -56,7 +68,7 @@
     <div class="metric-card">
       <div class="label">四大云厂季度CAPEX</div>
       <div class="value" id="metric-cloud-capex">$198B</div>
-      <div class="change up">↑ +85% YoY</div>
+      <div class="change up">↑ +97% YoY</div>
       <div class="card-date">数据截至: 2026Q3*</div>
     </div>
   </div>
@@ -68,25 +80,25 @@
       <div class="summary-card">
         <h4><span class="icon">🏭</span> 产能</h4>
         <p>
-          2026Q2 三大厂合计月产能约 <span class="num-hl">795千片/月</span>（等效12寸晶圆），较去年同期 <span class="num-hl">+48.6% YoY</span>。其中 SK Hynix 380千片、Samsung 320千片、Micron 95千片。三家利用率均超 <span class="num-hl">97%</span>，行业无闲置产能。HBM 已占 DRAM 产值约 <span class="num-hl">31%</span>（2023年仅8%），新增先进晶圆 <span class="warn">60%优先供给HBM</span>，消费级 DRAM 产能被大幅挤压。
+          2026Q3* 三大厂合计月产能约 <span class="num-hl">855千片/月</span>（等效12寸晶圆），较去年同期 <span class="num-hl">+33.6% YoY</span>。其中 SK Hynix 410千片、Samsung 345千片、Micron 100千片（美光计划年底前提升至10万片）。三家利用率均达 <span class="num-hl">98-99%</span>，行业无闲置产能。HBM 已占 DRAM 产值约 <span class="num-hl">31%</span>（2023年仅8%），新增先进晶圆 <span class="warn">60%优先供给HBM</span>，消费级 DRAM 产能被大幅挤压。
         </p>
       </div>
       <div class="summary-card">
         <h4><span class="icon">📈</span> 需求</h4>
         <p>
-          2026年 HBM 需求量约 <span class="num-hl">5000万GB</span>，较2025年 <span class="num-hl">+127% YoY</span>。NVIDIA 占需求结构 58%，云厂商自研 ASIC（TPU/Trainium/MTIA）占 27%。四大云厂2026Q2 合计 CAPEX <span class="num-hl">$1712亿</span>，<span class="warn">+79% YoY</span>；全年五大巨头合计约 <span class="num-hl">8000亿美元</span>。单 GPU HBM 用量从 B200(192GB)→Rubin(288GB)→Rubin Ultra(576GB) 持续翻倍。
+          2026年 HBM 需求量约 <span class="num-hl">5000万GB</span>，较2025年 <span class="num-hl">+127% YoY</span>。NVIDIA 占需求结构 58%，云厂商自研 ASIC（TPU/Trainium/MTIA）占 27%。四大云厂2026Q3* 合计 CAPEX <span class="num-hl">$198B</span>，<span class="warn">+97% YoY</span>；全年五大巨头合计约 <span class="num-hl">8300亿美元</span>。单 GPU HBM 用量从 B200(192GB)→Rubin(288GB)→Rubin Ultra(576GB) 持续翻倍。
         </p>
       </div>
       <div class="summary-card">
         <h4><span class="icon">⚠️</span> 供需缺口</h4>
         <p>
-          2026Q2 供需缺口率 <span class="warn">+18.2%</span>，缺口持续扩大，已连续6个季度处于严重供不应求。供应商库存周转降至 <span class="num-hl">22-27天</span>（去年同期约90天），客户库存仅 1-2 周。三大厂2026全年 HBM 产能已被长协 <span class="warn">100%锁定</span>（合计近2万亿美元长期协议），中小厂商无现货可拿。<span class="warn">2027年前缺口难以实质性收窄</span>。
+          2026Q3* 供需缺口率 <span class="warn">+20.0%</span>，缺口持续扩大，已连续7个季度处于严重供不应求。供应商库存周转降至 <span class="num-hl">20-25天</span>（去年同期约90天），客户库存仅 1-2 周。三大厂2026全年 HBM 产能已被长协 <span class="warn">100%锁定</span>（合计近2万亿美元长期协议），中小厂商无现货可拿。TrendForce 判断 DRAM 供不应求延续至2027年，<span class="warn">价格涨势或延续至 2027H2</span>。
         </p>
       </div>
       <div class="summary-card">
         <h4><span class="icon">🔮</span> 未来趋势</h4>
         <p>
-          HBM 均价 2026Q2 达 <span class="num-hl">$16.8/GB</span>，<span class="num-hl">+44.8% YoY</span>，美银预测2027年继续涨至 $17.5/GB。HBM 在 AI 芯片成本中占比已从 52%(2024Q1)升至 <span class="warn">63%(2025Q4)</span>，预计2026Q2进一步上升至约 <span class="warn">68%</span>。HBM4 规模量产中，HBM4E 预计2027年导入。扩产周期 24-36个月，<span class="warn">2027年下半年新产能释放或为拐点窗口</span>，但结构涨价将对冲产能增量。
+          HBM 均价 2026Q3* 达 <span class="num-hl">$18.2/GB</span>，<span class="num-hl">+31.9% YoY</span>，8月全球 DRAM/NAND 均价创历史新高，PC DRAM 8月合约价 $25 创纪录。HBM 在 AI 芯片成本中占比已从 52%(2024Q1)升至 68%(2026Q2)，2026Q3* 进一步升至约 <span class="warn">70%</span>。HBM4 规模量产中，三星已为英伟达开发 8 层 HBM4E，HBM4E 预计2027年导入。扩产周期 24-36个月，<span class="warn">2027年下半年新产能释放或为拐点窗口</span>，但结构涨价将对冲产能增量。
         </p>
       </div>
     </div>
@@ -110,7 +122,7 @@
     <div id="chart-prosperity-trend" class="chart-container"></div>
     <div style="margin-top:12px; padding:12px; background:#FAFBFC; border-radius:6px; font-size:13px; color:var(--text-secondary);">
       <b>趋势解读：</b> 当前景气度94分（极高景气，+2 QoQ），预期景气度95分（持续上行）。预期>当前，趋势信号为<b style="color:#e74c3c">上行</b>。
-      供需缺口持续扩大至+20.0%（较去年同期+9.5pp），Vera Rubin量产推动需求，HBM价格继续上行。英伟达FY27Q2数据中心营收890亿美元(+117% YoY)，下季指引1080亿。2027年下半年新产能释放或为拐点窗口。
+      供需缺口持续扩大至+20.0%（较去年同期+7.5pp），Vera Rubin量产推动需求，HBM价格继续上行。英伟达FY27Q2数据中心营收890亿美元(+117% YoY)，下季指引1080亿。美光预警供给缺口延续至2028年，2027年下半年新产能释放或为拐点窗口。
     </div>
   </div>
 
@@ -157,7 +169,7 @@
 
     <!-- 最新动态 -->
     <div class="card">
-      <div class="card-title">最新动态 <span class="badge">近30天</span> <span class="badge">数据截至 2026-09-07</span></div>
+      <div class="card-title">最新动态 <span class="badge">近30天</span> <span class="badge">数据截至 2026-09-21</span></div>
       <div id="timeline-news"></div>
     </div>
   </div>
@@ -295,7 +307,7 @@
 
 <!-- 页脚 -->
 <div class="footer">
-  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.3 | 数据来源: TrendForce / Omdia / 美银 / NVIDIA财报 / 各厂财报 / Gartner</p>
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.4 | 数据来源: TrendForce / Omdia / 美银 / NVIDIA财报 / 各厂财报 / Gartner</p>
   <p style="margin-top:4px;">数据均来自公开信息整理，仅供研究参考，不构成投资建议</p>
   <div class="aigc-watermark">本文档由AI辅助生成</div>
 </div>

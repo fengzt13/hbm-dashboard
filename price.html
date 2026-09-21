@@ -29,15 +29,25 @@
   <h1 class="page-title">HBM 价格监控</h1>
   <p class="page-subtitle">各代产品价格走势 · 合同价 · 季度环比/同比 · 涨幅对比 · 预测区间</p>
 
+  <!-- 数据更新说明条 -->
+  <div class="data-freshness-bar">
+    <div class="fresh-title">📌 数据更新说明</div>
+    <div style="margin-bottom:2px;">数据更新操作时间：<b>2026年9月21日</b></div>
+    <div>
+      <span class="fresh-item">存储价格(DRAM/NAND/HBM)：<b>截至 2026-08-31</b></span>
+      <span class="fresh-item">HBM季度均价：<b>截至 2026Q3*</b>（预估）</span>
+    </div>
+  </div>
+
   <div class="metric-grid">
-    <div class="metric-card"><div class="label">HBM 当前均价</div><div class="value">$16.8<span class="unit">/GB</span></div><div class="change up">↑ 12.7% QoQ · +44.8% YoY</div><div class="card-date">数据截至: 2026Q2</div></div>
-    <div class="metric-card"><div class="label">2025年均价(美银)</div><div class="value">$14.3<span class="unit">/GB</span></div><div class="change neutral">美银预测均价</div><div class="card-date">统计: 2025全年</div></div>
+    <div class="metric-card"><div class="label">HBM 当前均价</div><div class="value">$18.2<span class="unit">/GB</span></div><div class="change up">↑ 8.3% QoQ · +31.9% YoY</div><div class="card-date">数据截至: 2026Q3*</div></div>
+    <div class="metric-card"><div class="label">PC DRAM 8月合约价</div><div class="value">$25<span class="unit">/个</span></div><div class="change up">创历史新高</div><div class="card-date">数据截至: 2026-08</div></div>
     <div class="metric-card"><div class="label">2027年均价(美银)</div><div class="value">$17.5<span class="unit">/GB</span></div><div class="change up">↑ +22% vs 2026</div><div class="card-date">预测: 2027E</div></div>
-    <div class="metric-card"><div class="label">HBM占AI芯片成本</div><div class="value">68<span class="unit">%</span></div><div class="change up">↑ 52%→63%→68% (24Q1→25Q4→26Q2)</div><div class="card-date">数据截至: 2026Q2</div></div>
+    <div class="metric-card"><div class="label">HBM占AI芯片成本</div><div class="value">70<span class="unit">%</span></div><div class="change up">↑ 52%→63%→68%→70% (24Q1→25Q4→26Q2→26Q3*)</div><div class="card-date">数据截至: 2026Q3*</div></div>
   </div>
 
   <div class="card">
-    <div class="card-title">HBM 均价走势 <span class="badge">$/GB · 2021Q1-2026Q2</span> <span class="badge">数据截至 2026Q2</span></div>
+    <div class="card-title">HBM 均价走势 <span class="badge">$/GB · 2021Q1-2026Q3*</span> <span class="badge">数据截至 2026Q3*</span></div>
     <div id="chart-price-trend" class="chart-container"></div>
   </div>
 
@@ -46,9 +56,21 @@
     <div id="gen-table"></div>
   </div>
 
+  <div class="card">
+    <div class="card-title">2026年8月存储价格快讯 <span class="badge">数据截至 2026-08-31</span></div>
+    <div style="padding:16px; background:var(--primary-light); border-radius:8px; font-size:13px; color:var(--primary-dark); line-height:1.8;">
+      <b>集邦咨询(TrendForce)2026年8月数据:</b><br/>
+      • 8月全球DRAM与NAND Flash平均价格<b>创历史新高</b>，但环比涨幅已有所收窄，不同类型存储芯片涨价态势分化<br/>
+      • 主流PC DRAM 8月平均合约价达 <b>$25</b>，创有记录以来历史新高<br/>
+      • Q3常规DRAM合约价预计环比上涨 <b>+13%~18%</b>，NAND Flash合约价预计上涨 <b>+10%~15%</b><br/>
+      • 分析师许家源：DRAM供不应求格局预计延续至2027年，价格涨势延续至2027年下半年<br/><br/>
+      <b>行情分化判断:</b> 服务器DRAM、HBM与企业级SSD尚未见顶；消费级NAND与手机DRAM进入顶部形成期，PC DRAM处于顶部预警。
+    </div>
+  </div>
+
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">存储产品价格涨幅对比 <span class="badge">2025H2-2027E</span> <span class="badge">数据截至 2026Q2</span></div>
+      <div class="card-title">存储产品价格涨幅对比 <span class="badge">2025H2-2027E</span> <span class="badge">数据截至 2026Q3*</span></div>
       <table>
         <thead><tr><th>产品</th><th class="num">2025H2</th><th class="num">2026E (YoY)</th><th class="num">2027E</th></tr></thead>
         <tbody>
@@ -62,13 +84,13 @@
     </div>
 
     <div class="card">
-      <div class="card-title">美银 HBM 价格预测 <span class="badge">数据截至 2026Q2</span></div>
+      <div class="card-title">美银 HBM 价格预测 <span class="badge">数据截至 2026Q3*</span></div>
       <table>
         <thead><tr><th class="num">年份</th><th class="num">均价($/GB)</th><th class="num">YoY</th><th>备注</th></tr></thead>
         <tbody>
           <tr><td class="num">2024</td><td class="num">$10.5</td><td class="num warn">+81% YoY</td><td>H100放量期</td></tr>
           <tr><td class="num">2025</td><td class="num highlight">$14.3</td><td class="num warn">+36% YoY</td><td>美银预测均价</td></tr>
-          <tr><td class="num">2026</td><td class="num highlight">$16.8</td><td class="num warn">+17.5% YoY</td><td>实际已超预期</td></tr>
+          <tr><td class="num">2026</td><td class="num highlight">$18.2</td><td class="num warn">+27.3% YoY</td><td>实际已超预期(截至2026Q3*)</td></tr>
           <tr><td class="num">2027</td><td class="num highlight">$17.5</td><td class="num warn">+4.2% YoY</td><td>HBM4/4E高端占比提升</td></tr>
           <tr><td class="num">2028</td><td class="num highlight">$17.5</td><td class="num">0% YoY</td><td>结构涨价对冲产能增量</td></tr>
         </tbody>
@@ -80,19 +102,19 @@
   </div>
 
   <div class="card">
-    <div class="card-title">HBM 在 AI 芯片成本中的权重变化 <span class="badge">Epoch AI 估算</span> <span class="badge">数据截至 2026Q2</span></div>
+    <div class="card-title">HBM 在 AI 芯片成本中的权重变化 <span class="badge">Epoch AI 估算</span> <span class="badge">数据截至 2026Q3*</span></div>
     <div id="chart-hbm-cost-share" class="chart-container" style="min-height:300px;"></div>
     <div style="margin-top:12px; padding:16px; background:var(--primary-light); border-radius:8px; font-size:13px; color:var(--primary-dark);">
       <b>Epoch AI 估算:</b><br/>
-      从2024Q1到2026Q2，英伟达、AMD、谷歌和亚马逊设计的AI芯片中，HBM内存占总组件支出的比例从52%升至约68%。<br/><br/>
-      当一块AI加速卡上六成以上成本来自内存而非GPU本身，存储就不再只是配套，而是核心竞争力。
+      从2024Q1到2026Q3*，英伟达、AMD、谷歌和亚马逊设计的AI芯片中，HBM内存占总组件支出的比例从52%升至约70%。<br/><br/>
+      当一块AI加速卡上七成成本来自内存而非GPU本身，存储就不再只是配套，而是核心竞争力。
     </div>
   </div>
 
 </div>
 
 <div class="footer">
-  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.3 | 数据来源: TrendForce / Omdia / 美银 / Epoch AI</p>
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.4 | 数据来源: TrendForce / Omdia / 美银 / Epoch AI</p>
   <div class="aigc-watermark">本文档由AI辅助生成</div>
 </div>
 
