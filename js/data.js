@@ -7,13 +7,14 @@
 
 const HBM_DATA = {
   meta: {
-    version: "1.4",
-    lastUpdate: "2026-09-21",
+    version: "1.5",
+    lastUpdate: "2026-10-08",
     dataFreshness: [
-      { key: "存储价格(DRAM/NAND/HBM)", date: "2026-08-31", note: "8月合约价创历史新高,涨幅收窄" },
-      { key: "NVIDIA财报", date: "2026-08-26", note: "FY27Q2实际值,截至2026-07-26" },
+      { key: "存储价格(DRAM/NAND/HBM)", date: "2026-09-30", note: "TrendForce Q4预测:HBM+15~20%,NAND+15~20%" },
+      { key: "NVIDIA财报", date: "2026-08-26", note: "FY27Q2实际值,下季指引1080亿" },
+      { key: "美光财报", date: "2026-09-30", note: "FY2026 Q4营收542.3亿(+379%)" },
       { key: "DRAM市占率", date: "2026-09-07", note: "TrendForce 2026Q2报告" },
-      { key: "景气度/产能/库存/供需", date: "2026Q3*", note: "预估数据,以*标注" }
+      { key: "景气度/产能/库存/供需", date: "2026Q4*", note: "预估数据,以*标注" }
     ],
     dataSources: [
       "TrendForce - DRAM/HBM 季度报告",
@@ -50,7 +51,8 @@ const HBM_DATA = {
         { quarter: "2025Q4", score: 89, label: "极高景气", supplyGap: 14.8, priceMoM: 20, inventoryDays: 28, utilization: 98 },
         { quarter: "2026Q1", score: 91, label: "极高景气", supplyGap: 16.5, priceMoM: 25, inventoryDays: 25, utilization: 98 },
         { quarter: "2026Q2", score: 92, label: "极高景气", supplyGap: 18.2, priceMoM: 28, inventoryDays: 22, utilization: 99 },
-        { quarter: "2026Q3*", score: 94, label: "极高景气", supplyGap: 20.0, priceMoM: 30, inventoryDays: 20, utilization: 99, forecast: true }
+        { quarter: "2026Q3*", score: 94, label: "极高景气", supplyGap: 20.0, priceMoM: 30, inventoryDays: 20, utilization: 99, forecast: true },
+        { quarter: "2026Q4*", score: 95, label: "极高景气", supplyGap: 22.0, priceMoM: 35, inventoryDays: 18, utilization: 99, forecast: true, note: "TrendForce Q4预测:DRAM+15~20%" }
       ],
       weights: {
         supplyGap: 0.40,
@@ -59,12 +61,12 @@ const HBM_DATA = {
         utilization: 0.15
       },
       latest: {
-        score: 94,
+        score: 95,
         label: "极高景气",
         color: "#e74c3c",
-        supplyGap: 20.0,
-        priceMoM: 30,
-        inventoryDays: 20,
+        supplyGap: 22.0,
+        priceMoM: 35,
+        inventoryDays: 18,
         utilization: 99
       }
     },
@@ -87,9 +89,9 @@ const HBM_DATA = {
         { quarter: "2026Q2", score: 93 },
         // 预测值
         { quarter: "2026Q3*", score: 95, forecast: true },
-        { quarter: "2026Q4*", score: 94, forecast: true },
-        { quarter: "2027Q1*", score: 92, forecast: true },
-        { quarter: "2027Q2*", score: 89, forecast: true }
+        { quarter: "2026Q4*", score: 96, forecast: true },
+        { quarter: "2027Q1*", score: 94, forecast: true },
+        { quarter: "2027Q2*", score: 91, forecast: true }
       ],
       weights: {
         cloudCapex: 0.30,
@@ -146,14 +148,15 @@ const HBM_DATA = {
       { quarter: "2025Q4", price: 14.3, hbmGen: "HBM4" },
       { quarter: "2026Q1", price: 15.5, hbmGen: "HBM4" },
       { quarter: "2026Q2", price: 16.8, hbmGen: "HBM4" },
-      { quarter: "2026Q3*", price: 18.2, hbmGen: "HBM4", forecast: true, note: "大摩预测:Q3 DDR4涨50%,HBM继续上行" }
+      { quarter: "2026Q3*", price: 18.2, hbmGen: "HBM4", forecast: true, note: "大摩预测:Q3 DDR4涨50%,HBM继续上行" },
+      { quarter: "2026Q4*", price: 20.0, hbmGen: "HBM4", forecast: true, note: "TrendForce 9/30预测:Q4含HBM DRAM合约价+15~20%" }
     ],
     // 美银预测均价
     forecast: [
       { year: 2025, pricePerGB: 14.3, label: "美银预测均价" },
       { year: 2026, pricePerGB: 16.8, label: "美银预测均价", note: "实际已超预期(2026Q3*实际$18.2)" },
-      { year: 2027, pricePerGB: 17.5, label: "美银预测均价" },
-      { year: 2028, pricePerGB: 17.5, label: "美银预测均价" }
+      { year: 2027, pricePerGB: 17.5, label: "美银预测均价", note: "TrendForce 9/29上修:2027混合ASP+121%" },
+      { year: 2028, pricePerGB: 17.5, label: "美银预测均价", note: "大摩:2028 ASP+25%" }
     ],
     // 各代产品价格对比
     byGeneration: [
@@ -161,7 +164,7 @@ const HBM_DATA = {
       { gen: "HBM3", launchYear: 2022, pricePerGB: "5-9", capacity: "24-80GB", bandwidth: "3.2TB/s", status: "存量主力" },
       { gen: "HBM3E", launchYear: 2024, pricePerGB: "10-15", capacity: "80-192GB", bandwidth: "4.8TB/s", status: "主流在产" },
       { gen: "HBM4", launchYear: 2026, pricePerGB: "15-21", capacity: "192-288GB", bandwidth: "8TB/s", status: "规模量产" },
-      { gen: "HBM4E", launchYear: 2027, pricePerGB: "20-25(预估)", capacity: "288-576GB", bandwidth: "10TB/s+", status: "研发中" },
+      { gen: "HBM4E", launchYear: 2027, pricePerGB: "20-25(预估)", capacity: "288-576GB", bandwidth: "10TB/s+", status: "2027H2逐步放量" },
       { gen: "HBM5", launchYear: 2029, pricePerGB: "待定", capacity: "1TB+", bandwidth: "待定", status: "规划中" }
     ],
     // 涨幅数据
@@ -182,7 +185,8 @@ const HBM_DATA = {
       hbm4_premium: "+30%",
       // HBM占AI芯片组件支出比例
       hbmCostShare_2024Q1: "52%",
-      hbmCostShare_2025Q4: "63%"
+      hbmCostShare_2025Q4: "63%",
+      hbmCostShare_2026Q3: "70%"
     },
     // HBM 在 AI 芯片成本中占比时间序列 (Epoch AI 估算)
     hbmCostShareTimeline: [
@@ -191,7 +195,8 @@ const HBM_DATA = {
       { quarter: "2025Q2", share: 58 },
       { quarter: "2025Q4", share: 63 },
       { quarter: "2026Q2", share: 68 },
-      { quarter: "2026Q3*", share: 70, forecast: true, note: "预估: HBM4持续涨价推动" }
+      { quarter: "2026Q3*", share: 70, forecast: true, note: "预估: HBM4持续涨价推动" },
+      { quarter: "2026Q4*", share: 72, forecast: true, note: "TrendForce预测Q4 DRAM+15~20%" }
     ],
     // 2026年8月存储市场最新价格信号 (集邦/公开报道)
     aug2026: {
@@ -200,6 +205,17 @@ const HBM_DATA = {
       q3DramGuidance: "Q3常规DRAM合约价环比+13%~18%,NAND +10%~15%",
       trendForceAnalyst: "TrendForce分析师许家源:DRAM供不应求延续至2027年,价格涨势延续至2027H2",
       note: "服务器DRAM、HBM与企业级SSD尚未见顶;消费级NAND与手机DRAM进入顶部形成期"
+    },
+    // 2026年9月存储市场最新价格信号 (TrendForce 9/30 Q4预测)
+    sep2026: {
+      q4DramGuidance: "Q4一般DRAM合约价环比+10~15%,含HBM整体DRAM+15~20%",
+      q4NandGuidance: "Q4 NAND Flash整体合约价环比+15~20%",
+      hbm2027Asp: "TrendForce 9/29上修:2027年HBM混合ASP同比+121%",
+      samsungHbmShare: "三星VP:2027年HBM将占DRAM晶圆产能近30%(目前约20%)",
+      samsungCapacity: "三星HBM月均晶圆投入:今年约18万片→明年约25万片(+40%)",
+      diePenalty: "摩根大通:HBM产出效率仅普通DRAM的1/3-1/4,Die Penalty效应显著",
+      inventory: "KB证券:三星/SK海力士存储库存降至不足10天供应量(正常30-45天)",
+      note: "DRAM持续强势,NAND面临修正压力;Rubin削减HBM4至8层以控成本"
     }
   },
 
@@ -224,7 +240,8 @@ const HBM_DATA = {
       { quarter: "2025Q4", skHynix: 320, samsung: 280, micron: 85 },
       { quarter: "2026Q1", skHynix: 350, samsung: 300, micron: 90 },
       { quarter: "2026Q2", skHynix: 380, samsung: 320, micron: 95 },
-      { quarter: "2026Q3*", skHynix: 410, samsung: 345, micron: 100, forecast: true, note: "美光计划年底前月产能提升至10万片" }
+      { quarter: "2026Q3*", skHynix: 410, samsung: 345, micron: 100, forecast: true, note: "美光计划年底前月产能提升至10万片" },
+      { quarter: "2026Q4*", skHynix: 430, samsung: 375, micron: 105, forecast: true, note: "三星明年月均晶圆投入增至25万片(+40%)" }
     ],
     // HBM占DRAM产能比重 (按位元)
     hbmShareOfDRAM: [
@@ -251,7 +268,8 @@ const HBM_DATA = {
       { quarter: "2025Q4", skHynix: 98, samsung: 97, micron: 96 },
       { quarter: "2026Q1", skHynix: 99, samsung: 97, micron: 97 },
       { quarter: "2026Q2", skHynix: 99, samsung: 98, micron: 98 },
-      { quarter: "2026Q3*", skHynix: 99, samsung: 98, micron: 98, forecast: true }
+      { quarter: "2026Q3*", skHynix: 99, samsung: 98, micron: 98, forecast: true },
+      { quarter: "2026Q4*", skHynix: 99, samsung: 98, micron: 98, forecast: true }
     ],
     // HBM+服务器RDIMM占DRAM位元供应量
     hbmServerShare: {
@@ -307,7 +325,8 @@ const HBM_DATA = {
       { quarter: "2025Q4", skHynix: 28, samsung: 32, micron: 35 },
       { quarter: "2026Q1", skHynix: 25, samsung: 28, micron: 30 },
       { quarter: "2026Q2", skHynix: 22, samsung: 25, micron: 27 },
-      { quarter: "2026Q3*", skHynix: 20, samsung: 23, micron: 25, forecast: true, note: "预估: 库存继续去化" }
+      { quarter: "2026Q3*", skHynix: 20, samsung: 23, micron: 25, forecast: true, note: "预估: 库存继续去化" },
+      { quarter: "2026Q4*", skHynix: 18, samsung: 20, micron: 22, forecast: true, note: "KB证券:三星/SK库存降至不足10天供应量" }
     ],
     // 客户端库存可用周数 (估算)
     clientWeeks: [
@@ -325,7 +344,8 @@ const HBM_DATA = {
       { quarter: "2025Q4", nvidia: 2, amd: 4, cloud: 2 },
       { quarter: "2026Q1", nvidia: 2, amd: 3, cloud: 1 },
       { quarter: "2026Q2", nvidia: 2, amd: 3, cloud: 1 },
-      { quarter: "2026Q3*", nvidia: 2, amd: 2, cloud: 1, forecast: true }
+      { quarter: "2026Q3*", nvidia: 2, amd: 2, cloud: 1, forecast: true },
+      { quarter: "2026Q4*", nvidia: 2, amd: 2, cloud: 1, forecast: true, note: "库存极低:KB证券报告三星/SK不足10天" }
     ],
     // 库存预警阈值
     alertThresholds: {
@@ -458,7 +478,14 @@ const HBM_DATA = {
       { date: "2026.08", event: "美光预警:内存供给缺口延续至2028年", impact: "供需持续" },
       { date: "2026.09", event: "美光计划年底前HBM月产能提升至10万片", impact: "供给端扩张" },
       { date: "2026.09", event: "TrendForce:2026Q2全球DRAM营收1547亿美元,长鑫市占率升至9.5%", impact: "竞争格局变化" },
-      { date: "2026.09", event: "美银上调美国半导体2030年TAM至3.2万亿美元", impact: "长期空间上修" }
+      { date: "2026.09", event: "美银上调美国半导体2030年TAM至3.2万亿美元", impact: "长期空间上修" },
+      { date: "2026.09", event: "TrendForce 9/29上修2027年HBM混合ASP预期+121%", impact: "价格上修" },
+      { date: "2026.09", event: "三星VP:2027年HBM将占DRAM晶圆产能近30%,三星明年月均投入25万片(+40%)", impact: "产能扩张" },
+      { date: "2026.09", event: "摩根大通:HBM ASP 2027年+54%,Die Penalty产出效率仅1/3-1/4", impact: "供需持续" },
+      { date: "2026.09", event: "美光FY26 Q4营收542.3亿(+379%),HBM签约价格明显上调", impact: "财报验证" },
+      { date: "2026.09", event: "TrendForce 9/30预测:Q4 DRAM+10~15%,含HBM+15~20%,NAND+15~20%", impact: "全品类涨价" },
+      { date: "2026.09", event: "KB证券:三星/SK海力士存储库存降至不足10天供应量", impact: "库存极低" },
+      { date: "2026.09", event: "大摩:Rubin削减HBM4至8层以控成本,8层成2027年优先方案", impact: "需求结构调整" }
     ],
     // 长期供应协议
     longTermDeals: [
@@ -493,21 +520,29 @@ const HBM_DATA = {
       // 2026
       { quarter: "2026Q1", aws: 45.0, microsoft: 38.0, google: 35.0, meta: 25.0 },
       { quarter: "2026Q2", aws: 54.2, microsoft: 41.0, google: 44.9, meta: 31.1, note: "合计1712亿美元,同比大幅增长" },
-      { quarter: "2026Q3*", aws: 62.0, microsoft: 48.0, google: 52.0, meta: 36.0, forecast: true, note: "预估: Vera Rubin量产推动,五大巨头全年约8300亿" }
+      { quarter: "2026Q3*", aws: 62.0, microsoft: 48.0, google: 52.0, meta: 36.0, forecast: true, note: "预估: Vera Rubin量产推动,五大巨头全年约8600亿" },
+      { quarter: "2026Q4*", aws: 68.0, microsoft: 52.0, google: 58.0, meta: 40.0, forecast: true, note: "预估: 四大厂2026指引合计约7300亿(+77% YoY)" }
     ],
     // 2026全年CAPEX指引
     capexGuidance2026: [
       { company: "Amazon/AWS", guidance: "约2200亿美元", note: "从2000亿上调" },
-      { company: "Alphabet/Google", guidance: "1950-2050亿美元", note: "从1800-1900亿上调" },
+      { company: "Alphabet/Google", guidance: "1950-2050亿美元", note: "已上调约150亿" },
       { company: "Microsoft", guidance: "约1750亿美元", note: "会计调整后" },
       { company: "Meta", guidance: "1300-1450亿美元", note: "下限从1250亿上调" },
       { company: "Oracle", guidance: "约1000亿美元+", note: "AI基础设施投资" }
     ],
+    // 四大厂+Oracle 合计2026指引
+    capexGuidanceSummary: {
+      fourMajors: "约7300亿美元 (+77% YoY)",
+      fiveMajors: "约8600亿美元",
+      note: "巴克莱:五大厂商CAPEX已消耗约90%经营现金流",
+      source: "凤凰网/百度百家号 2026.10报道"
+    },
     // 摩根士丹利预测
     morganStanleyForecast: {
-      "2026": "约8000亿美元 (五大巨头合计)",
-      "2027": "超过1.1万亿美元",
-      note: "2026年几乎是2025年的两倍,是2024年的三倍"
+      "2026": "约8600亿美元 (五大巨头合计)",
+      "2027": "超过1.2万亿美元",
+      note: "2026年几乎是2025年的两倍,巴克莱:CAPEX已消耗约90%经营现金流"
     },
     // 存储占云厂商资本支出比重
     storageShareOfCapex: {
@@ -530,9 +565,9 @@ const HBM_DATA = {
     ],
     // 2026年全球超大规模云厂商AI基础设施资本支出
     globalAIInfra: {
-      "2026": "8300亿美元",
-      growth: "+79% YoY",
-      note: "IDC统计:一季度全球AI基础设施支出897亿美元,同比+33%"
+      "2026": "8600亿美元",
+      growth: "+77% YoY",
+      note: "美银Yorkville:五大云平台AI基础设施支出约8500亿;巴克莱:CAPEX已消耗约90%经营现金流"
     }
   },
 
@@ -633,7 +668,8 @@ const HBM_DATA = {
       { quarter: "2025Q4", supply: 8.5, demand: 9.76, gap: 14.8 },
       { quarter: "2026Q1", supply: 9.2, demand: 10.72, gap: 16.5 },
       { quarter: "2026Q2", supply: 10.0, demand: 11.82, gap: 18.2, note: "缺口持续扩大" },
-      { quarter: "2026Q3*", supply: 11.0, demand: 13.20, gap: 20.0, forecast: true, note: "预估: Vera Rubin量产推动需求" }
+      { quarter: "2026Q3*", supply: 11.0, demand: 13.20, gap: 20.0, forecast: true, note: "预估: Vera Rubin量产推动需求" },
+      { quarter: "2026Q4*", supply: 11.8, demand: 14.50, gap: 22.0, forecast: true, note: "TrendForce Q4预测:DRAM+15~20%,缺口持续扩大" }
     ],
     // 年度供需平衡
     yearly: [
@@ -651,6 +687,13 @@ const HBM_DATA = {
   // 11. 最新动态时间轴
   // ============================================================
   latestNews: [
+    { date: "2026-09-30", title: "TrendForce预测:Q4 DRAM合约价+10~15%,含HBM整体+15~20%,NAND+15~20%", category: "价格", impact: "高" },
+    { date: "2026-09-30", title: "美光FY2026 Q4财报:营收542.3亿美元(+379%),HBM营收增速超整体,签约价格明显上调", category: "财报", impact: "高" },
+    { date: "2026-09-29", title: "TrendForce上修2027年HBM混合ASP预期:同比+121%(供给紧张+HBM4占比提升+HBM4e放量)", category: "市场", impact: "高" },
+    { date: "2026-09-29", title: "三星VP Kim Taewoo:2027年HBM将占DRAM晶圆产能近30%(目前约20%),三星明年月均投入25万片(+40%)", category: "产能", impact: "高" },
+    { date: "2026-09-29", title: "摩根大通HBM研报:HBM ASP 2027年+54%、2028年+25%;Die Penalty:HBM产出效率仅普通DRAM 1/3-1/4", category: "市场", impact: "高" },
+    { date: "2026-09-23", title: "大摩:Rubin削减HBM4规格至8层以控成本,8层成2027年GPU/ASIC优先方案", category: "需求", impact: "中" },
+    { date: "2026-09-10", title: "TrendForce:DRAM持续强势(DRR5小涨),NAND面临修正压力(消费需求疲软+库存压力)", category: "价格", impact: "中" },
     { date: "2026-09-17", title: "花旗:AI'持续学习'或开启存储新周期,HBM/服务器DRAM/eSSD短缺或持续至2031年", category: "市场", impact: "高" },
     { date: "2026-09-15", title: "美银上调美国半导体2030年TAM至3.2万亿美元(此前2.7万亿),存储与数据中心驱动", category: "市场", impact: "高" },
     { date: "2026-09-07", title: "TrendForce:2026Q2全球DRAM营收1547亿美元(+59.5% QoQ),长鑫市占率升至9.5%", category: "市场", impact: "高" },
@@ -665,8 +708,7 @@ const HBM_DATA = {
     { date: "2026-08-22", title: "英伟达宣布2027年起AI服务器涨价超15%,因HBM成本飙升", category: "价格", impact: "高" },
     { date: "2026-08-20", title: "Google发布TPU v7 Ironwood:192GB HBM3E,峰值算力较v5p提升10倍", category: "需求", impact: "中" },
     { date: "2026-08-19", title: "大摩:Q3 DDR4涨50%、Q4再涨10%,SLC NAND每季度涨超50%,HBM挤压消费级产能", category: "价格", impact: "高" },
-    { date: "2026-08-18", title: "TrendForce:DRAM供不应求延续至2027年,价格涨势延续至2027H2", category: "市场", impact: "高" },
-    { date: "2026-07-06", title: "美银发布HBM完整预测:2026年269亿美元,2030年836亿美元", category: "市场", impact: "高" }
+    { date: "2026-08-18", title: "TrendForce:DRAM供不应求延续至2027年,价格涨势延续至2027H2", category: "市场", impact: "高" }
   ],
 
   // ============================================================

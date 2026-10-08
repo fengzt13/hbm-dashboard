@@ -23,7 +23,7 @@
   </div>
   
 </nav>
-  <div class="cross-bar"><span class="cross-links-label">友情链接</span><a class="cross-link" href="https://fengzt13.github.io/nasdaq100-dashboard/">纳指看板</a><a class="cross-link" href="https://fengzt13.github.io/ai-dashboard/">AI看板</a><a class="cross-link" href="https://fengzt13.github.io/metal-dashboard/">金铜看板</a><a class="cross-link" href="https://fengzt13.github.io/laolei-views/">老雷观点</a><a class="cross-link" href="https://fengzt13.github.io/jinjiancheng-skill/">金渐成SKILL</a><span class="cross-bar-meta">数据截至: 2026Q3* | 月度更新</span></div>
+  <div class="cross-bar"><span class="cross-links-label">友情链接</span><a class="cross-link" href="https://fengzt13.github.io/nasdaq100-dashboard/">纳指看板</a><a class="cross-link" href="https://fengzt13.github.io/ai-dashboard/">AI看板</a><a class="cross-link" href="https://fengzt13.github.io/metal-dashboard/">金铜看板</a><a class="cross-link" href="https://fengzt13.github.io/laolei-views/">老雷观点</a><a class="cross-link" href="https://fengzt13.github.io/jinjiancheng-skill/">金渐成SKILL</a><span class="cross-bar-meta">数据截至: 2026Q4* | 月度更新</span></div>
 
 <div class="container">
   <h1 class="page-title">HBM 产能监控</h1>
@@ -32,27 +32,28 @@
   <!-- 数据更新说明条 -->
   <div class="data-freshness-bar">
     <div class="fresh-title">📌 数据更新说明</div>
-    <div style="margin-bottom:2px;">数据更新操作时间：<b>2026年9月21日</b></div>
+    <div style="margin-bottom:2px;">数据更新操作时间：<b>2026年10月8日</b></div>
     <div>
-      <span class="fresh-item">产能/利用率：<b>截至 2026Q3*</b>（预估）</span>
+      <span class="fresh-item">产能/利用率：<b>截至 2026Q4*</b>（预估）</span>
       <span class="fresh-item">HBM占DRAM产值比重：<b>2026年统计</b></span>
+      <span class="fresh-item">三星HBM晶圆占比：<b>截至 2026-09-29</b>（VP发言）</span>
     </div>
   </div>
 
   <div class="metric-grid">
-    <div class="metric-card"><div class="label">全球HBM月产能</div><div class="value">855<span class="unit">千片/月</span></div><div class="change up">↑ 7.5% QoQ · +33.6% YoY</div><div class="card-date">数据截至: 2026Q3*</div></div>
-    <div class="metric-card"><div class="label">平均产能利用率</div><div class="value">98<span class="unit">%</span></div><div class="change warn">较去年同期+12pp，接近满载</div><div class="card-date">数据截至: 2026Q3*</div></div>
+    <div class="metric-card"><div class="label">全球HBM月产能</div><div class="value">910<span class="unit">千片/月</span></div><div class="change up">↑ 6.4% QoQ · +42.2% YoY</div><div class="card-date">数据截至: 2026Q4*</div></div>
+    <div class="metric-card"><div class="label">平均产能利用率</div><div class="value">98<span class="unit">%</span></div><div class="change warn">较去年同期+12pp，接近满载</div><div class="card-date">数据截至: 2026Q4*</div></div>
     <div class="metric-card"><div class="label">HBM占DRAM产值</div><div class="value">31<span class="unit">%</span></div><div class="change up">较2023年8%提升23pp</div><div class="card-date">统计: 2026年</div></div>
-    <div class="metric-card"><div class="label">HBM+服务器RDIMM占比</div><div class="value">51<span class="unit">%</span></div><div class="change">占DRAM位元供应量</div><div class="card-date">统计: 2026年</div></div>
+    <div class="metric-card"><div class="label">HBM占三星晶圆产能</div><div class="value">~20→30<span class="unit">%</span></div><div class="change up">2026→2027E (VP 9/29)</div><div class="card-date">来源: 三星VP</div></div>
   </div>
 
   <div class="card">
-    <div class="card-title">三大供应商产能走势 <span class="badge">千片/月 · 等效12寸晶圆</span> <span class="badge">数据截至 2026Q3*</span></div>
+    <div class="card-title">三大供应商产能走势 <span class="badge">千片/月 · 等效12寸晶圆</span> <span class="badge">数据截至 2026Q4*</span></div>
     <div id="chart-capacity" class="chart-container"></div>
   </div>
 
   <div class="card">
-    <div class="card-title">产能利用率 <span class="badge">%</span> <span class="badge">数据截至 2026Q3*</span></div>
+    <div class="card-title">产能利用率 <span class="badge">%</span> <span class="badge">数据截至 2026Q4*</span></div>
     <div id="chart-utilization" class="chart-container"></div>
     <div style="margin-top:12px; padding:10px; background:#FAFBFC; border-radius:6px; font-size:13px;">
       <b>预警逻辑:</b> 利用率 >90% = 高景气; 85-90% = 正常; <85% = 低迷。当前三家均达98-99%，行业产能利用率持续维持95%以上，不存在闲置产能缓冲需求。
@@ -68,7 +69,7 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-title">技术节点演进 <span class="badge">数据截至 2026Q3*</span></div>
+      <div class="card-title">技术节点演进 <span class="badge">数据截至 2026Q4*</span></div>
       <table>
         <thead><tr><th>节点</th><th>量产时间</th><th>主要厂商</th><th>应用</th></tr></thead>
         <tbody>
@@ -78,18 +79,21 @@
           <tr><td>1d nm</td><td>2027(规划)</td><td>待定</td><td>HBM4E</td></tr>
         </tbody>
       </table>
+      <div style="margin-top:8px; font-size:12px; color:var(--text-secondary);">
+        <b>三星VP Kim Taewoo 9/29:</b> 目前HBM约占晶圆产能20%，2027年近30%；三星今年18万片→明年25万片/月(+40%)。
+      </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">产能扩张路线图 <span class="badge">数据截至 2026Q3*</span></div>
+    <div class="card-title">产能扩张路线图 <span class="badge">数据截至 2026Q4*</span></div>
     <div id="roadmap"></div>
   </div>
 
 </div>
 
 <div class="footer">
-  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.4 | 数据来源: TrendForce / 各厂财报 / 公开新闻</p>
+  <p>广州番禺有趣打工仔小冯的HBM监控看板 v1.5 | 数据来源: TrendForce / 各厂财报 / 公开新闻 / 三星VP发言</p>
   <div class="aigc-watermark">本文档由AI辅助生成</div>
 </div>
 
